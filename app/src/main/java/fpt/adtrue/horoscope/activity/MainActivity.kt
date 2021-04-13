@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
-    @SuppressLint("RtlHardcoded", "NewApi")
+    @SuppressLint("RtlHardcoded", "NewApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
             binding.drawerLayout.openDrawer(Gravity.LEFT)
         }
 
-        binding.versionName.text = packageManager.getPackageInfo(packageName, 0).versionName
+        binding.versionName.text = "Version Name: ${packageManager.getPackageInfo(packageName, 0).versionName}"
 
         binding.astroProfileBack.setOnClickListener {
             binding.about.visibility = View.GONE

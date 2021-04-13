@@ -3,6 +3,7 @@ package fpt.adtrue.horoscope.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import fpt.adtrue.horoscope.R
@@ -22,6 +23,7 @@ class ChooseSignActivity :AppCompatActivity(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_sign)
         binding.gridSign.adapter = SignAdapter(context = applicationContext)
         binding.gridSign.setOnItemClickListener { _, _, _, id ->
+            binding.loading.visibility = View.VISIBLE
             App.SIGN = id.toInt()
             setDataLocal( App.SIGN,applicationContext)
             val intent = Intent(applicationContext, MainActivity::class.java)
