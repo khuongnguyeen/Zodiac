@@ -29,6 +29,8 @@ class StartReadingTarotActivity : AppCompatActivity(), StartReadingTarotAdapter.
         })
 
 
+        binding.rlLo.setOnClickListener {  }
+
         binding.compatChoiceBack.setOnClickListener {
             onBackPressed()
         }

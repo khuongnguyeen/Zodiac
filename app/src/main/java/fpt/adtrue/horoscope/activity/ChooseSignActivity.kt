@@ -2,19 +2,17 @@ package fpt.adtrue.horoscope.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.SignAdapter
-import fpt.adtrue.horoscope.adapter.SignPagerAdapter
-import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.api.Utils.setDataLocal
+import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivitySelectSignBinding
 
-class ChooseSignActivity :AppCompatActivity(){
+class ChooseSignActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySelectSignBinding
 
@@ -25,15 +23,13 @@ class ChooseSignActivity :AppCompatActivity(){
         binding.gridSign.setOnItemClickListener { _, _, _, id ->
             binding.loading.visibility = View.VISIBLE
             App.SIGN = id.toInt()
-            setDataLocal( App.SIGN,applicationContext)
+            setDataLocal(App.SIGN, applicationContext)
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivities(arrayOf(intent))
         }
-
-        Utils.sttBar(this)
-//        choice_sign_go_wims
+        sttBar(this)
         binding.choiceSignGoWims.setOnClickListener {
-            setDataLocal( App.SIGN,applicationContext)
+            setDataLocal(App.SIGN, applicationContext)
             val intent = Intent(applicationContext, WhatIsMySignActivity::class.java)
             startActivities(arrayOf(intent))
         }
