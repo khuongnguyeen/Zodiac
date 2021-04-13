@@ -32,7 +32,7 @@
                         android:theme="@style/MyOverflowButtonStyle"
                         app:contentInsetStartWithNavigation="0.0dip"
                         app:popupTheme="@style/AppTheme.PopupOverlay"
-                        app:navigationIcon="@drawable/menu"
+                        app:navigationIcon="@drawable/baseline_menu_white_36dp"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                                 android:layout_gravity="center"
                                 android:paddingBottom="3dp"
                                 android:padding="@dimen/_8sdp"
-                                android:src="@drawable/s11_wh"
+                                android:src="@drawable/s11_or"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -111,15 +111,6 @@
                     android:visibility="visible"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-                <!--            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"-->
-                <!--                android:id="@id/adView"-->
-                <!--                android:layout_width="fill_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_gravity="bottom|center"-->
-                <!--                android:gravity="center"-->
-                <!--                android:visibility=""-->
-                <!--                ads:adSize="BANNER"-->
-                <!--                ads:adUnitId="@string/adUnitIdBanner" />-->
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
             <com.google.android.material.navigation.NavigationView
@@ -136,5 +127,88 @@
 
             </com.google.android.material.navigation.NavigationView>
         </androidx.drawerlayout.widget.DrawerLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_blur_4"
+            android:visibility="gone"
+            >
+
+            <LinearLayout
+                android:id="@+id/astro_profile_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="@dimen/size_back"
+                    android:layout_height="@dimen/size_back"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/back_white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toTopOf="@+id/version_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/size_text_title"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/version_name"
+                app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+
+            <TextView
+                android:id="@+id/version_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1.0.4 okjpngfo"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/size_text_title"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/mail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="walkinsvicky@gmail.com"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/size_text_no"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </FrameLayout>
 </layout>

@@ -108,6 +108,8 @@
                 </RelativeLayout>
 
 
+
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView2"
                     android:layout_width="match_parent"
@@ -268,23 +270,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <RelativeLayout
-                            android:id="@+id/relativeLayout2"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:visibility="@{data.isLoading ? View.VISIBLE : View.GONE}"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
 
-                            <ProgressBar
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:backgroundTint="@color/red"
-                                tools:ignore="UnusedAttribute" />
-                        </RelativeLayout>
 
                         <LinearLayout
                             android:id="@+id/linearLayout11"
@@ -498,6 +484,24 @@
                 </androidx.cardview.widget.CardView>
 
 
+                <RelativeLayout
+                    android:id="@+id/relativeLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_600sdp"
+                    android:background="@color/black_blur"
+                    android:visibility="@{data.isLoading ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:backgroundTint="@color/red"
+                        tools:ignore="UnusedAttribute" />
+                </RelativeLayout>
+
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_bot_1"
                     android:layout_width="match_parent"
@@ -616,7 +620,7 @@
                             android:layout_width="@dimen/_20sdp"
                             android:layout_height="@dimen/_20sdp"
                             android:layout_marginEnd="30dp"
-                            android:src="@drawable/chevron"
+                            android:src="@drawable/baseline_keyboard_arrow_right_white_36dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -667,7 +671,7 @@
                             android:layout_width="@dimen/_20sdp"
                             android:layout_height="@dimen/_20sdp"
                             android:layout_marginEnd="30dp"
-                            android:src="@drawable/chevron"
+                            android:src="@drawable/baseline_keyboard_arrow_right_white_36dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -716,7 +720,7 @@
                             android:layout_width="@dimen/_20sdp"
                             android:layout_height="@dimen/_20sdp"
                             android:layout_marginEnd="30dp"
-                            android:src="@drawable/chevron"
+                            android:src="@drawable/baseline_keyboard_arrow_right_white_36dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

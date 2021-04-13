@@ -62,37 +62,24 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Are You"
+            android:text="Are You\nMade for each other"
             android:textColor="@android:color/white"
             android:textSize="@dimen/_16sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/compat_choice_top_bar" />
 
-        <TextView
-            android:id="@+id/compat_choice_title2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/compat_choice_title1"
-            android:gravity="center_horizontal"
-            android:text="Made for each other"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_16sdp"
-            app:layout_constraintBottom_toTopOf="@+id/compat_choice_signs"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/compat_choice_title1" />
 
         <LinearLayout
             android:id="@+id/compat_choice_signs"
             android:layout_width="0dp"
-            android:weightSum="2"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:weightSum="2"
             app:layout_constraintBottom_toTopOf="@+id/compat_choice_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/compat_choice_top_bar">
+            app:layout_constraintTop_toBottomOf="@+id/compat_choice_title1">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -232,13 +219,6 @@
                 android:layout_marginLeft="2.0dip"
                 android:layout_toRightOf="@+id/compat_choice_go_wims_2">
 
-                <ImageView
-                    android:layout_width="9.0dip"
-                    android:layout_height="9.0dip"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="1.0dip"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/chevron" />
             </FrameLayout>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

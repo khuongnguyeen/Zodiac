@@ -26,10 +26,7 @@ class ChoiceSignProfileAstroActivity: AppCompatActivity(){
             val intent = Intent(applicationContext, ProfileAstroActivity::class.java)
             startActivities(arrayOf(intent))
         }
-
-
         sttBar(this)
-//        choice_sign_go_wims
         binding.choiceSignGoWims.setOnClickListener {
             setDataLocal(App.SIGN, applicationContext)
             val intent = Intent(applicationContext, ChoiceDate::class.java)
@@ -39,6 +36,12 @@ class ChoiceSignProfileAstroActivity: AppCompatActivity(){
         binding.choiceSignBack.setOnClickListener {
             onBackPressed()
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
     }
 
 }

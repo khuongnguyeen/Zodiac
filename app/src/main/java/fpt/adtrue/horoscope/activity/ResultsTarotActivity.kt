@@ -5,85 +5,72 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.azoft.carousellayoutmanager.CarouselLayoutManager
+import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
+import com.azoft.carousellayoutmanager.CenterScrollListener
 import fpt.adtrue.horoscope.R
+import fpt.adtrue.horoscope.adapter.SignPagerAdapter
+import fpt.adtrue.horoscope.adapter.TarotResultAdapter
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivityTarotResultsBinding
 
-class ResultsTarotActivity : Activity() {
+class ResultsTarotActivity : Activity(), View.OnTouchListener {
 
     private lateinit var binding: ActivityTarotResultsBinding
+    var loveUpright = ""
+    var loveReversed = ""
+    var careerUpright = ""
+    var futureUpright = ""
+    var careerReversed = ""
+    var futureReversed = ""
+    var layoutManager:CarouselLayoutManager? = null
+
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tarot_results)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        var loveUpright = ""
-        var loveReversed = ""
-        var careerUpright = ""
-        var futureUpright = ""
-        var careerReversed = ""
-        var futureReversed = ""
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+
+
+        layoutManager = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true)
+        layoutManager!!.setPostLayoutListener(CarouselZoomPostLayoutListener())
+
+        binding.rc.layoutManager = layoutManager
+        binding.rc.setHasFixedSize(true)
+        binding.rc.adapter = TarotResultAdapter()
+        binding.rc.addOnScrollListener(CenterScrollListener())
+
+
         App.getTarot().forEach {
             if (it.name == App.POSITION_LOVE) {
-                binding.ivLove.setImageResource(it.img!!)
                 loveUpright = it.keywords.love.upright
                 loveReversed = it.keywords.love.reversed
             }
             if (it.name == App.POSITION_CAREER) {
-                binding.ivCareer.setImageResource(it.img!!)
                 careerUpright = it.keywords.career.upright
                 careerReversed = it.keywords.career.reversed
             }
             if (it.name == App.POSITION_FUTURE) {
-                binding.ivFuture.setImageResource(it.img!!)
                 futureUpright = it.keywords.future.upright
                 futureReversed = it.keywords.future.reversed
             }
         }
-        binding.txtLove.visibility = View.VISIBLE
-        binding.viewLeft.setImageResource(R.drawable.bg_view_tarot)
-        binding.tvLoveDetail.text = loveUpright
-        binding.tvReversed.text = loveReversed
+
+
+
+        binding.rc.setOnTouchListener(this)
+
+
+
+
 
         Utils.sttBar(this)
-        binding.ivLove.setOnClickListener {
-            binding.txtLove.visibility = View.VISIBLE
-            binding.txtCareer.visibility = View.INVISIBLE
-            binding.txtFuture.visibility = View.INVISIBLE
-            binding.tvLoveDetail.text = loveUpright
-            binding.tvReversed.text = loveReversed
-            binding.viewLeft.setImageResource(R.drawable.bg_view_tarot)
-            binding.viewCenter.setImageResource(R.drawable.bg_troan)
-            binding.viewRight.setImageResource(R.drawable.bg_troan)
-
-        }
-        binding.ivCareer.setOnClickListener {
-            binding.txtLove.visibility = View.INVISIBLE
-            binding.txtCareer.visibility = View.VISIBLE
-            binding.txtFuture.visibility = View.INVISIBLE
-            binding.tvLoveDetail.text = careerUpright
-            binding.tvReversed.text = careerReversed
-            binding.viewCenter.setImageResource(R.drawable.bg_view_tarot)
-            binding.viewRight.setImageResource(R.drawable.bg_troan)
-            binding.viewLeft.setImageResource(R.drawable.bg_troan)
-        }
-
-        binding.ivFuture.setOnClickListener {
-            binding.txtLove.visibility = View.INVISIBLE
-            binding.txtCareer.visibility = View.INVISIBLE
-            binding.txtFuture.visibility = View.VISIBLE
-            binding.tvLoveDetail.text = futureUpright
-            binding.tvReversed.text = futureReversed
-            binding.viewRight.setImageResource(R.drawable.bg_view_tarot)
-            binding.viewCenter.setImageResource(R.drawable.bg_troan)
-            binding.viewLeft.setImageResource(R.drawable.bg_troan)
-        }
 
         binding.compatChoiceBack.setOnClickListener {
             onBackPressed()
@@ -100,5 +87,28 @@ class ResultsTarotActivity : Activity() {
         fun start(context: Context) {
             context.startActivity(Intent(context, ResultsTarotActivity::class.java))
         }
+    }
+
+    override fun onTouch(v: View?, event: MotionEvent): Boolean {
+        when(event.action){
+            MotionEvent.ACTION_MOVE->{
+                if (layoutManager!!.centerItemPosition == 0){
+                    binding.tvLoveDetail.text = loveUpright
+                    binding.tvReversed.text = loveReversed
+
+                }
+                if (layoutManager!!.centerItemPosition == 1){
+
+                    binding.tvLoveDetail.text = careerUpright
+                    binding.tvReversed.text = careerReversed
+                }
+                if (layoutManager!!.centerItemPosition == 2){
+
+                    binding.tvLoveDetail.text = futureUpright
+                    binding.tvReversed.text = futureReversed
+                }
+            }
+        }
+        return false
     }
 }

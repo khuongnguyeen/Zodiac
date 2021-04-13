@@ -12,6 +12,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import fpt.adtrue.horoscope.R
@@ -21,10 +22,7 @@ import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivityStartBinding
 import fpt.adtrue.horoscope.fragment.ChooseSign
-import fpt.adtrue.horoscope.model.DataCompatibilityItem
-import fpt.adtrue.horoscope.model.DataSignItem
-import fpt.adtrue.horoscope.model.DataTarot
-import fpt.adtrue.horoscope.model.DataZodiac
+import fpt.adtrue.horoscope.model.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.io.*
@@ -58,6 +56,10 @@ class StartActivity : AppCompatActivity() {
 
                 manager.beginTransaction().add(R.id.content, fr1, "1").commit()
             } else {
+
+                App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
+                App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
+                App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivities(arrayOf(intent))
 
@@ -67,14 +69,39 @@ class StartActivity : AppCompatActivity() {
 
 
 
+        val calendar = Calendar.getInstance(TimeZone.getDefault()) as Calendar
+        var mon = "${calendar.get(Calendar.MONTH) + 1}"
+        var day = "${calendar.get(Calendar.DAY_OF_MONTH)}"
+
+        var yesterday = "${calendar.get(Calendar.DAY_OF_MONTH) - 1}"
+        var tomorrow = "${calendar.get(Calendar.DAY_OF_MONTH) + 1}"
+
+        val res = calendar.getActualMaximum(Calendar.DATE)
+        if (day.toInt() == res) {
+            tomorrow = "1"
+            mon = "${calendar.get(Calendar.MONTH) + 2}"
+        }
+        if (day.toInt() == 1) {
+            yesterday = "${calendar.getActualMaximum(Calendar.DATE - 1)}"
+            mon = "${calendar.get(Calendar.MONTH) }"
+        }
+        if (mon.toInt() < 10) {
+            mon = "0$mon"
+        }
+        if (day.toInt() < 10) {
+            day = "0$day"
+        }
+        if (yesterday.toInt() < 10) {
+            yesterday = "0$yesterday"
+        }
+        if (tomorrow.toInt() < 10) {
+            tomorrow = "0$tomorrow"
+        }
 
 
-
-        App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
-
-        App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
-
-        App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
+        getAmazon(yesterday, mon, calendar.get(Calendar.YEAR), App.getTarot2())
+        getAmazon(day, mon, calendar.get(Calendar.YEAR), App.getTarot3())
+        getAmazon(tomorrow, mon, calendar.get(Calendar.YEAR), App.getTarot4())
 
 
 
@@ -91,7 +118,24 @@ class StartActivity : AppCompatActivity() {
 //        notifyMe.addAction(Intent intent,String text)
     }
 
+    @SuppressLint("CheckResult")
+    fun getAmazon(day: String, mon: String, year: Int, data: MutableLiveData<DataAmazonaws>) {
+        App.getViewModel().isLoading.set(true)
+        horoscopeApi2.getDataAmazon(day, mon, year)
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    data.value = it
+                    Log.e("getAmazon__________", Gson().toJson(it))
+                    App.getViewModel().isLoading.set(false)
+                },
+                {
+                    Log.e("getAmazon", Gson().toJson(it))
 
+                    App.getViewModel().isLoading.set(false)
+                })
+    }
 
 
     private fun getCompatibility() {

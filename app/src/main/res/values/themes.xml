@@ -15,7 +15,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
-    <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" >
+    <style name="AppTheme.PopupOverlay" parent="@style/Theme.AppCompat.Light.DarkActionBar" >
 
         <item name="android:colorBackground">@color/black</item>
         <item name="android:background">@color/black</item>

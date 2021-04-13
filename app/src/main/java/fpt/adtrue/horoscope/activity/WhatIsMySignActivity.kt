@@ -26,8 +26,12 @@ class WhatIsMySignActivity : AppCompatActivity(){
             val day = binding.dp.day
             val mon = binding.dp.month
             App.SIGN = checkDate(mon, day)
+            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
+            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
+            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivities(arrayOf(intent))
+
         }
 
         Utils.sttBar(this)

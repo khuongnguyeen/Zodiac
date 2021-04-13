@@ -37,6 +37,12 @@ class ChooseSign : Fragment() {
         binding.gridSign.setOnItemClickListener { _, _, _, id ->
             App.SIGN = id.toInt()
             setDataLocal(App.SIGN, context!!)
+            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
+
+            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
+
+            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
+
             val intent = Intent(context, MainActivity::class.java)
             context!!.startActivities(arrayOf(intent))
         }

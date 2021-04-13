@@ -27,7 +27,6 @@
                 android:gravity="center"
                 android:text="LOVE"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:textStyle="bold"
                 android:visibility="invisible"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="@+id/view_1"

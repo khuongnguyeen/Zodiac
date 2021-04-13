@@ -40,7 +40,7 @@ object Utils {
             )
             .build()
         return Retrofit.Builder()
-            .baseUrl("https://aztro.sameerkumar.website")
+            .baseUrl(Constant.BASE_URL_API)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(http)

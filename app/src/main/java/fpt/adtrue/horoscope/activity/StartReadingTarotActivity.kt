@@ -3,6 +3,9 @@ package fpt.adtrue.horoscope.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -44,6 +47,14 @@ class StartReadingTarotActivity : AppCompatActivity(), StartReadingTarotAdapter.
     override fun onClickItem(position: Int) {
         if (position == 0) {
             TarotCircleCardActivity.start(this)
-        } else Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+        } else {
+            binding.rlLo.visibility = View.VISIBLE
+            binding.logo.playAnimation()
+            val enableButton = Runnable {
+                binding.rlLo.visibility = View.GONE
+            }
+            Handler(Looper.getMainLooper()).postDelayed(enableButton, 2000)
+
+        }
     }
 }

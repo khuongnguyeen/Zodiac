@@ -16,11 +16,9 @@ import io.reactivex.schedulers.Schedulers
 
 class HoroscopeViewModel {
     private val horoscopeApi: HoroscopeApi = createRetrofit()
-    private val horoscopeApi2: HoroscopeApi = createRetrofit2()
     val data = MutableLiveData<DataHoroscope>()
     val data1 = MutableLiveData<DataHoroscope>()
     val data2 = MutableLiveData<DataHoroscope>()
-    val data3 = MutableLiveData<DataAmazonaws>()
     val isLoading= ObservableBoolean(false)
     @SuppressLint("CheckResult")
     fun getHoroscope(sign:String,day:String) {
@@ -48,20 +46,4 @@ class HoroscopeViewModel {
                 })
     }
 
-
-    @SuppressLint("CheckResult")
-    fun getAmazon(day:String, mon:String,year:Int) {
-        isLoading.set(true)
-        horoscopeApi2.getDataAmazon(day, mon, year)
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                {
-                    data3.value = it
-                    Log.e("getAmazon__________", Gson().toJson(it))
-                },
-                {
-                    Log.e("getAmazon",Gson().toJson(it))
-                })
-    }
 }

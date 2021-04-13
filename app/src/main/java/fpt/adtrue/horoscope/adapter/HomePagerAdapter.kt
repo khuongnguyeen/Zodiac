@@ -3,7 +3,6 @@ package fpt.adtrue.horoscope.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import fpt.adtrue.horoscope.fragment.AdFragment
 import fpt.adtrue.horoscope.fragment.FragmentHomePager
 
 class HomePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
@@ -20,10 +19,7 @@ class HomePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
             1 -> {
                 return FragmentHomePager(1)
             }
-            2 -> {
-                return FragmentHomePager(2)
-            }
-            else -> return AdFragment()
+            else -> return FragmentHomePager(2)
         }
     }
 

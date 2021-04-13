@@ -8,10 +8,14 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.view.*
+import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import fpt.adtrue.horoscope.R
@@ -39,29 +43,65 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         binding.toolbar.setNavigationOnClickListener {
             binding.drawerLayout.openDrawer(Gravity.LEFT)
         }
+
+        binding.versionName.text = packageManager.getPackageInfo(packageName, 0).versionName
+
+        binding.astroProfileBack.setOnClickListener {
+            binding.about.visibility = View.GONE
+        }
+        binding.about.setOnClickListener {  }
+
+
         binding.toolbar.setOnMenuItemClickListener {
-            when(it.itemId){
-                R.id.menu2->{
-                        rateApp()
-                        true
+            when (it.itemId) {
+                R.id.menu2 -> {
+                    binding.about.visibility = View.VISIBLE
+                    true
                 }
                 else -> false
             }
         }
         binding.navView.setNavigationItemSelectedListener {
+
             when (it.itemId) {
+
                 R.id.person_horo -> {
                     val intent = Intent(this, ProfileAstroActivity::class.java)
                     startActivity(intent)
                     true
                 }
+
                 R.id.my_as_profile -> {
                     val intent = Intent(this, ChoiceCompatActivity::class.java)
                     startActivity(intent)
                     true
                 }
+
                 R.id.tarot -> {
                     StartReadingTarotActivity.start(this)
+                    true
+                }
+
+                R.id.contact_us -> {
+                    val intent = Intent(
+                        Intent.ACTION_SENDTO,
+                        Uri.fromParts("mailto", "walkinsvicky@gmail.com", null)
+                    )
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "subject")
+                    intent.putExtra(Intent.EXTRA_TEXT, "Horoscope")
+                    startActivity(Intent.createChooser(intent, "Choose apps to connect with us :"))
+                    true
+                }
+
+                R.id.rate_us -> {
+                    rateApp()
+                    true
+                }
+
+                R.id.about_us -> {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    binding.about.visibility = View.VISIBLE
+
                     true
                 }
 
@@ -70,9 +110,9 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     val intent = Intent(this, ProfileAstroActivity::class.java)
                     intent.putExtra("horoscope", "Zodiac")
                     startActivity(intent)
-
                     true
                 }
+
                 R.id.action_taurus -> {
                     App.SIGN = 1
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -80,6 +120,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_gemini -> {
                     App.SIGN = 2
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -87,6 +128,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_cancer -> {
                     App.SIGN = 3
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -94,6 +136,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_leo -> {
                     App.SIGN = 4
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -101,6 +144,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_virgo -> {
                     App.SIGN = 5
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -108,6 +152,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_libra -> {
                     App.SIGN = 6
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -115,6 +160,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_scorpio -> {
                     App.SIGN = 7
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -122,6 +168,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_sagittarius -> {
                     App.SIGN = 8
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -129,6 +176,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_capricorn -> {
                     App.SIGN = 9
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -136,6 +184,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_aquarius -> {
                     App.SIGN = 10
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -143,6 +192,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
+
                 R.id.action_pisces -> {
                     App.SIGN = 11
                     val intent = Intent(this, ProfileAstroActivity::class.java)
@@ -150,8 +200,6 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                     startActivity(intent)
                     true
                 }
-
-
                 else -> false
             }
         }
@@ -172,8 +220,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         binding.slidingTabs.setupWithViewPager(binding.viewpager)
         binding.viewpager.adapter = HomePagerAdapter(supportFragmentManager)
         binding.slidingTabs.getTabAt(1)?.select()
-        binding.viewpager.offscreenPageLimit = 2
-
+//        binding.viewpager.offscreenPageLimit = 2
         binding.logoSign.setOnClickListener {
             val intent = Intent(applicationContext, ChooseSignActivity::class.java)
             startActivities(arrayOf(intent))
@@ -184,10 +231,6 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
 
 
     }
-
-
-
-
 
     private fun rateApp() {
         try {
