@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/paywall_bg"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/astro_profile_top_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:background="@color/black_blur"
+            android:gravity="center_vertical">
+
+
+
+            <ImageView
+                android:id="@+id/astro_profile_back_2"
+                android:layout_width="@dimen/size_back"
+                android:layout_height="@dimen/size_back"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/_10sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/back_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+
+                android:id="@+id/astro_profile_back"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_marginEnd="@dimen/_25sdp"
+                android:gravity="center"
+                android:text="@string/menu_item_24_txt"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_text_top"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/astro_profile_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/astro_profile_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/size_margin_top"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/astro_profile_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/header"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/hp_barometre"
+                        android:layout_width="160.0dip"
+                        android:layout_height="160.0dip"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="56dp"
+                        android:alpha="0.9"
+                        android:src="@drawable/homepage_baro"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sign_dates" />
+
+                    <ImageView
+                        android:id="@+id/hp_sign"
+                        android:layout_width="60.0dip"
+                        android:layout_height="60.0dip"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/s1_or"
+                        app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
+                        app:layout_constraintEnd_toEndOf="@+id/hp_barometre"
+                        app:layout_constraintStart_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintTop_toTopOf="@+id/hp_barometre" />
+
+                    <TextView
+                        android:id="@+id/tv_sign_dates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Feb 19 – Mar 20"
+                        android:textStyle="bold"
+                        android:textColor="@color/warning_stroke_color"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="56dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Element"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_element"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Air"
+                            android:textColor="@color/warning_stroke_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                        app:layout_constraintEnd_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:textColor="@color/white"
+                            android:text="Color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Brown"
+                            android:textColor="@color/warning_stroke_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/hp_barometre">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Symbol"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_symbol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="sea-goat"
+                            android:textColor="@color/warning_stroke_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="56dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/hp_barometre"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Key phrase"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_phrase"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="I know"
+                            android:textColor="@color/warning_stroke_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/hp_barometre"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lucky Day"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_lucky_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Saturday"
+                            android:textColor="@color/warning_stroke_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
+                        app:layout_constraintEnd_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Planet"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_planet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Uranus"
+                            android:textColor="@color/warning_stroke_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_sign_name_astro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="TextView"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="italic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/hp_barometre" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    app:layout_constraintTop_toBottomOf="@+id/header">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Polarity"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_polarity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="masculine"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Modality"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_sign_modality"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="fixed"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_10sdp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardBackgroundColor="@color/black_blur"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout14">
+
+                    <fpt.adtrue.horoscope.customview.JustifyTextView
+                        android:id="@+id/astro_profile_text_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:gravity="center"
+                        android:text="@string/text"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_text_no" />
+                </androidx.cardview.widget.CardView>
+
+
+               <androidx.cardview.widget.CardView
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_margin="@dimen/_5sdp"
+                   app:cardCornerRadius="@dimen/_10sdp"
+                   app:cardBackgroundColor="@color/black_blur"
+                   app:cardElevation="0dp"
+                   app:layout_constraintBottom_toBottomOf="parent"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/cardView">
+                   <LinearLayout
+                       android:id="@+id/astro_profile_redir_chat_layout"
+                       android:layout_width="fill_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginBottom="1dp"
+                       android:orientation="vertical"
+                       android:paddingBottom="@dimen/_10sdp">
+
+                       <ImageView
+                           android:id="@+id/imageView"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content"
+                           android:adjustViewBounds="true"
+                           android:src="@drawable/hp_redir_chat" />
+
+                       <TextView
+                           android:id="@+id/astro_profile_redir_chat_title"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="@dimen/_10sdp"
+                           android:text="@string/menu_item1_txt"
+                           android:textAllCaps="true"
+                           android:textColor="@color/orange"
+                           android:textSize="@dimen/size_text_title" />
+
+                       <fpt.adtrue.horoscope.customview.JustifyTextView
+                           android:id="@+id/astro_profile_redir_chat_text"
+                           android:layout_width="fill_parent"
+                           android:layout_height="wrap_content"
+                           android:layout_marginStart="@dimen/_10sdp"
+                           android:layout_marginEnd="@dimen/_10sdp"
+                           android:layout_marginBottom="@dimen/_10sdp"
+                           android:text="Do not keep those confusing thoughts to youself. \nOur best psychics are waiting to answer all your questions."
+                           android:textColor="@color/white"
+                           android:textSize="@dimen/size_text_no" />
+
+                       <RelativeLayout
+                           android:id="@+id/astro_profile_redir_chat_button"
+                           android:layout_width="@dimen/size_width_button"
+                           android:layout_height="@dimen/size_height_button"
+                           android:layout_gravity="center"
+                           android:background="@drawable/bg_sign_home"
+                           android:gravity="center">
+
+                           <TextView
+                               android:id="@+id/astro_profile_redir_chat_button_text"
+                               android:layout_width="fill_parent"
+                               android:layout_height="wrap_content"
+                               android:gravity="center"
+                               android:maxLines="1"
+                               android:text="@string/a_doubt_a_question"
+                               android:textColor="@android:color/white"
+                               android:textSize="@dimen/size_text_no" />
+                       </RelativeLayout>
+                   </LinearLayout>
+               </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!--    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+        <!--        android:id="@+id/adView"-->
+        <!--        android:layout_width="fill_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_gravity="bottom|center"-->
+        <!--        android:gravity="center"-->
+        <!--        android:visibility="gone"-->
+        <!--        ads:adSize="BANNER"-->
+        <!--        ads:adUnitId="@string/adUnitIdBanner" />-->
+    </FrameLayout>
+</layout>

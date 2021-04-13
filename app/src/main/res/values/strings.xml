@@ -1,0 +1,58 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="MissingTranslation">Horoscope</string>
+    <string name="aries" tools:ignore="MissingTranslation">Aries</string>
+    <string name="taurus" tools:ignore="MissingTranslation">Taurus</string>
+    <string name="gemini" tools:ignore="MissingTranslation">Gemini</string>
+    <string name="cancer" tools:ignore="MissingTranslation">Cancer</string>
+    <string name="leo" tools:ignore="MissingTranslation">Leo</string>
+    <string name="virgo" tools:ignore="MissingTranslation">Virgo</string>
+    <string name="libra" tools:ignore="MissingTranslation">Libra</string>
+    <string name="scorpio" tools:ignore="MissingTranslation">Scorpio</string>
+    <string name="sagittarius" tools:ignore="MissingTranslation">Sagittarius</string>
+    <string name="capricorn" tools:ignore="MissingTranslation">Capricorn</string>
+    <string name="aquarius" tools:ignore="MissingTranslation">Aquarius</string>
+    <string name="pisces" tools:ignore="MissingTranslation">Pisces</string>
+    <string name="horoscope" tools:ignore="MissingTranslation">Horoscope</string>
+    <string name="compatibility" tools:ignore="MissingTranslation">Compatibility</string>
+    <string name="tarot" tools:ignore="MissingTranslation">Tarot</string>
+    <string name="portraitastro_rub1" tools:ignore="MissingTranslation">My zodiac sign</string>
+    <string name="text" tools:ignore="MissingTranslation">My zodiac sign HGUIODASHUIOGHAOIUGFDHA SUIDHSUOIuihsuoigfdhsao uifbdsuiahfosui hfoksabiuoh uishouigfvasdu vuoiah uahov</string>
+    <string name="portraitastro_rub2" tools:ignore="MissingTranslation">My element</string>
+    <string name="portraitastro_rub3" tools:ignore="MissingTranslation">My decan</string>
+    <string name="portraitastro_rub4" tools:ignore="MissingTranslation">My ascendant</string>
+    <string name="portraitastro_rub5" tools:ignore="MissingTranslation">My Chinese sign</string>
+    <string name="menu_item1_txt" tools:ignore="MissingTranslation">CHAT READING</string>
+    <string name="menu_item_21_txt" tools:ignore="MissingTranslation">Personalized horoscope</string>
+    <string name="menu_item_22_txt" tools:ignore="MissingTranslation">My love compatibility</string>
+    <string name="menu_item_23_txt" tools:ignore="MissingTranslation">Seasonal horoscopes</string>
+    <string name="menu_item_24_txt" tools:ignore="MissingTranslation">My astrological profile</string>
+    <string name="hp_quot_rub1_titre" tools:ignore="MissingTranslation">LOVE</string>
+    <string name="hp_quot_rub2_titre" tools:ignore="MissingTranslation">CAREER</string>
+    <string name="hp_quot_rub3_titre" tools:ignore="MissingTranslation">SOCIAL LIFE</string>
+    <string name="hp_quot_rub4_titre" tools:ignore="MissingTranslation">WELLBEING</string>
+    <string name="case_heurinc" tools:ignore="MissingTranslation">Time unknown</string>
+    <string name="chsign_p2_txt" tools:ignore="MissingTranslation">Define a zodiac sign</string>
+    <string name="champ_dob" tools:ignore="MissingTranslation">Date of birth</string>
+    <string name="champ_heurnaiss" tools:ignore="MissingTranslation">Time of birth</string>
+    <string name="champ_lieunaiss" tools:ignore="MissingTranslation">Place of birth</string>
+    <string name="chsign_p1_cta" tools:ignore="MissingTranslation">ENTER</string>
+    <string name="chsign_p1_txt" tools:ignore="MissingTranslation">Pick your zodiac sign</string>
+    <string name="case_cmonsign_txt" tools:ignore="MissingTranslation">This is my sign!</string>
+    <string name="chsign_p1_btn" tools:ignore="MissingTranslation">"I don't know my/their sign"</string>
+    <string name="compatam_p1_sign1" tools:ignore="MissingTranslation">ME</string>
+    <string name="compatam_p1_sign2" tools:ignore="MissingTranslation">HIM/HER</string>
+    <string name="compatam_p1_btn" tools:ignore="MissingTranslation">"I don't know their sign"</string>
+    <string name="compatam_p1_cta" tools:ignore="MissingTranslation">I want to know!</string>
+    <string name="compatam_p4_rub1_titre" tools:ignore="MissingTranslation">ADVICE</string>
+    <string name="compatam_p4_rub2_titre" tools:ignore="MissingTranslation">IN SHORT</string>
+    <string name="compatam_p4_rub3_titre" tools:ignore="MissingTranslation">STRENGTHS</string>
+    <string name="compatam_p4_rub4_titre" tools:ignore="MissingTranslation">WEAKNESSES</string>
+    <string name="compatam_p4_btn" tools:ignore="MissingTranslation">START AGAIN</string>
+    <string name="a_doubt_a_question" tools:ignore="MissingTranslation">A doubt, a question?</string>
+    <string name="horoperso_rub1" tools:ignore="MissingTranslation">Influence positiva</string>
+    <string name="horoperso_rub2" tools:ignore="MissingTranslation">Influence negativa</string>
+    <string name="your_profile" tools:ignore="MissingTranslation">Astro Profile</string>
+    <string name="do_you_really_want_to_exit" tools:ignore="MissingTranslation">Do you really want to exit ???</string>
+    <string name="reading_tarot">The Tarot is a symbolic map of consciousness that encompasses our journey through life, both spiritually and practically. Tarot reading is the practice of divining wisdom and guidance through a specific spread of Tarot cards. The cards are meant to provide insight into the innermost truths of your higher self. In other words, the cards provide an evolved awareness of what you already know deep within.</string>
+
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="fpt.adtrue.horoscope">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".application.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Horoscope"
+        tools:ignore="AllowBackup">
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".activity.StartActivity"
+
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ChooseSignActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChoiceCompatActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ResultCompatActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ProfileAstroActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.WhatIsMySignActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChoiceSignProfileAstroActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChoiceDate"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChoiceSignHerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".tarot3.TarotCircleCardActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ResultsTarotActivity"
+            android:theme="@style/Theme.Translucent"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.StartReadingTarotActivity"
+            android:screenOrientation="portrait"/>
+    </application>
+
+</manifest>
