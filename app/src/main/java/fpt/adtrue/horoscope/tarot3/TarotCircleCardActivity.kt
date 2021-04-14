@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.azoft.carousellayoutmanager.CarouselLayoutManager
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
 import com.azoft.carousellayoutmanager.CenterScrollListener
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.TarotAdapter
 import fpt.adtrue.horoscope.api.Utils
@@ -20,7 +21,7 @@ import fpt.adtrue.horoscope.databinding.ActivityTarotCircleCardBinding
 import fpt.adtrue.horoscope.databinding.ActivityTarotDemoBinding
 
 
-class TarotCircleCardActivity : AppCompatActivity(){
+class TarotCircleCardActivity : BaseActivity(){
 
     private lateinit var binding: ActivityTarotCircleCardBinding
 //    private lateinit var binding: ActivityTarotDemoBinding

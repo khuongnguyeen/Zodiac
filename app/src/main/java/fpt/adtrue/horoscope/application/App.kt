@@ -2,6 +2,7 @@ package fpt.adtrue.horoscope.application
 
 import android.app.Application
 import android.content.Context
+import android.media.MediaPlayer
 import androidx.lifecycle.MutableLiveData
 import fpt.adtrue.horoscope.model.*
 import fpt.adtrue.horoscope.viewmodel.HoroscopeViewModel
@@ -19,6 +20,9 @@ class App:Application() {
         fun getSign() = dataSign
         private val dataTarot = mutableListOf<DataTarot>()
         fun getTarot() = dataTarot
+
+
+        var media: MediaPlayer?=null
 
 
         private val dataTarot2 = MutableLiveData<DataAmazonaws>()

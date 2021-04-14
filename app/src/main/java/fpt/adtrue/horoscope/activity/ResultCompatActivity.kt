@@ -1,7 +1,6 @@
 package fpt.adtrue.horoscope.activity
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,18 +8,15 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.view.View
 import android.view.animation.LinearInterpolator
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivityCompatResultsBinding
 import java.util.*
-import kotlin.system.exitProcess
 
-class ResultCompatActivity : AppCompatActivity() {
+class ResultCompatActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCompatResultsBinding
     private var mCountDownTimer: CountDownTimer? = null
@@ -32,7 +28,7 @@ class ResultCompatActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_compat_results)
 
         Utils.sttBar(this)
-         runnable = Runnable {
+        runnable = Runnable {
             binding.compatBaro.animate()
                 .setDuration(30000)
                 .rotationBy(360F)
@@ -80,11 +76,9 @@ class ResultCompatActivity : AppCompatActivity() {
             }
         }
 
-//        compat_results_again
         binding.compatResultsAgain.setOnClickListener {
             onBackPressed()
         }
-
 
 
 //        compat_results_close

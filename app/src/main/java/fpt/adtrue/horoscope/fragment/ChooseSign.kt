@@ -35,6 +35,7 @@ class ChooseSign : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.gridSign.adapter = SignAdapter(context = context!!)
         binding.gridSign.setOnItemClickListener { _, _, _, id ->
+            binding.loading.visibility = View.VISIBLE
             App.SIGN = id.toInt()
             setDataLocal(App.SIGN, context!!)
             App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")

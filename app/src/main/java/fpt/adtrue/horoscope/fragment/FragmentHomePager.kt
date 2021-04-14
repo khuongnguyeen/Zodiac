@@ -38,7 +38,6 @@ class FragmentHomePager(private val position: Int) : Fragment() {
                 .start()
         }
         runnable!!.run()
-        binding.data = App.getViewModel()
         binding.hpSign.setImageResource(App.getZodiac()[App.SIGN].image2)
 
         if (position == 0) {

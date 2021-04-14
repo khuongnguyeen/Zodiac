@@ -42,7 +42,7 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ChoiceSignProfileAstroActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.ChoiceDate"
+        <activity android:name=".activity.ChoiceDateActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ChoiceSignHerActivity"
             android:screenOrientation="portrait"/>

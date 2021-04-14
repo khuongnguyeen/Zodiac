@@ -5,16 +5,17 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.animation.LinearInterpolator
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.api.Utils.capitalizeString
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivityAstroProfileBinding
 
-class ProfileAstroActivity : AppCompatActivity() {
+class ProfileAstroActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAstroProfileBinding
     var runnable: Runnable? = null
@@ -42,32 +43,32 @@ class ProfileAstroActivity : AppCompatActivity() {
             startActivities(arrayOf(intent))
             binding.hpSign.isEnabled = false
             val enableButton = Runnable { binding.hpSign.isEnabled = true }
-            Handler().postDelayed(enableButton, 1000)
+            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
         binding.hpSign.setImageResource(App.getZodiac()[App.SIGN].image3)
-        App.getSign().forEach {
-            if (App.getZodiac()[App.SIGN].name.equals(it.name, ignoreCase = true)) {
-                binding.astroProfileTextSign.text = "${it.description[0]} \n\n ${it.description[1]}"
-                binding.tvSignColor.text = capitalizeString(it.color)
-                binding.tvSignElement.text =  capitalizeString(it.element)
+        App.getSign().forEach { ok ->
+            if (App.getZodiac()[App.SIGN].name.equals(ok.name, ignoreCase = true)) {
+                binding.astroProfileTextSign.text = "${ok.description[0]} \n\n ${ok.description[1]}"
+                binding.tvSignColor.text = capitalizeString(ok.color)
+                binding.tvSignElement.text =  capitalizeString(ok.element)
                 var s = ""
-                it.planets.forEach {
+                ok.planets.forEach {
                     s += capitalizeString(it )+ "\n"
                 }
 
 
                 binding.tvSignPlanet.text = s
-                binding.tvSignSymbol.text =  capitalizeString(it.symbol)
-                binding.tvSignPhrase.text =  capitalizeString(it.phrase)
+                binding.tvSignSymbol.text =  capitalizeString(ok.symbol)
+                binding.tvSignPhrase.text =  capitalizeString(ok.phrase)
                 s = ""
-                it.days.forEach {
+                ok.days.forEach {
                     s +=  capitalizeString(it) + "\n"
                 }
                 binding.tvSignLuckyDay.text = s
-                binding.tvSignPolarity.text =  capitalizeString(it.polarity)
-                binding.tvSignModality.text =  capitalizeString(it.modality)
-                binding.tvSignDates.text = it.dates
+                binding.tvSignPolarity.text =  capitalizeString(ok.polarity)
+                binding.tvSignModality.text =  capitalizeString(ok.modality)
+                binding.tvSignDates.text = ok.dates
             }
         }
 
@@ -82,7 +83,7 @@ class ProfileAstroActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(intent, "Choose apps to connect with us :"))
             binding.astroProfileRedirChatButton.isEnabled = false
             val enableButton = Runnable { binding.astroProfileRedirChatButton.isEnabled = true }
-            Handler().postDelayed(enableButton, 1000)
+            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
         binding.astroProfileBack.setOnClickListener {

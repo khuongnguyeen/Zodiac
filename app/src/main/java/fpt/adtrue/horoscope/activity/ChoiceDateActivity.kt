@@ -1,16 +1,15 @@
 package fpt.adtrue.horoscope.activity
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivityWhatIsMySignBinding
 
-class ChoiceDate: AppCompatActivity(){
+class ChoiceDateActivity: BaseActivity(){
 
     private lateinit var binding: ActivityWhatIsMySignBinding
 

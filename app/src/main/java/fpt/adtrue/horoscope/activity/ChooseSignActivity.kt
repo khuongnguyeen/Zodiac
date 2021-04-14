@@ -3,8 +3,8 @@ package fpt.adtrue.horoscope.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.SignAdapter
 import fpt.adtrue.horoscope.api.Utils.setDataLocal
@@ -12,7 +12,7 @@ import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivitySelectSignBinding
 
-class ChooseSignActivity : AppCompatActivity() {
+class ChooseSignActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySelectSignBinding
 

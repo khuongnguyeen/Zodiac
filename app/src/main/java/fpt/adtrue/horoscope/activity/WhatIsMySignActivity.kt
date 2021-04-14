@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.api.Utils.checkDate
@@ -13,7 +14,7 @@ import fpt.adtrue.horoscope.databinding.ActivityWhatIsMySignBinding
 import java.util.*
 
 
-class WhatIsMySignActivity : AppCompatActivity(){
+class WhatIsMySignActivity : BaseActivity(){
 
     private lateinit var binding: ActivityWhatIsMySignBinding
 

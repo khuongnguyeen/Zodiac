@@ -9,8 +9,12 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import androidx.transition.Fade
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import com.ihsanbal.logging.Level
 import com.ihsanbal.logging.LoggingInterceptor
 import fpt.adtrue.horoscope.Constant
@@ -209,6 +213,15 @@ object Utils {
         if (on) winParams.flags = winParams.flags or this else winParams.flags =
             winParams.flags and inv()
         win.attributes = winParams
+    }
+
+
+    fun View.fadeVisibility(visibility: Int, duration: Long = 400) {
+        val transition: Transition = Fade()
+        transition.duration = duration
+        transition.addTarget(this)
+        TransitionManager.beginDelayedTransition(this.parent as ViewGroup, transition)
+        this.visibility = visibility
     }
 
 

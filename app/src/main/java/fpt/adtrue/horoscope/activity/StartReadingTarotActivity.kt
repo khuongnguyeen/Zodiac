@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.StartReadingTarotAdapter
 import fpt.adtrue.horoscope.api.Utils.sttBar
@@ -17,7 +18,7 @@ import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.TarotReadingActivityBinding
 import fpt.adtrue.horoscope.tarot3.TarotCircleCardActivity
 
-class StartReadingTarotActivity : AppCompatActivity(), StartReadingTarotAdapter.ITarot {
+class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITarot {
 
     private lateinit var binding: TarotReadingActivityBinding
 

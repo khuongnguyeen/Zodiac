@@ -23,15 +23,15 @@ import fpt.adtrue.horoscope.databinding.ActivityTarotResultsBinding
 class ResultsTarotActivity : Activity(), View.OnTouchListener {
 
     private lateinit var binding: ActivityTarotResultsBinding
-    var loveUpright = ""
-    var loveReversed = ""
-    var careerUpright = ""
-    var futureUpright = ""
-    var careerReversed = ""
-    var futureReversed = ""
-    var layoutManager:CarouselLayoutManager? = null
+    private var loveUpright = ""
+    private var loveReversed = ""
+    private var careerUpright = ""
+    private var futureUpright = ""
+    private var careerReversed = ""
+    private var futureReversed = ""
+    private var layoutManager:CarouselLayoutManager? = null
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tarot_results)
@@ -62,13 +62,7 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
             }
         }
 
-
-
         binding.rc.setOnTouchListener(this)
-
-
-
-
 
         Utils.sttBar(this)
 
@@ -95,15 +89,12 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
                 if (layoutManager!!.centerItemPosition == 0){
                     binding.tvLoveDetail.text = loveUpright
                     binding.tvReversed.text = loveReversed
-
                 }
                 if (layoutManager!!.centerItemPosition == 1){
-
                     binding.tvLoveDetail.text = careerUpright
                     binding.tvReversed.text = careerReversed
                 }
                 if (layoutManager!!.centerItemPosition == 2){
-
                     binding.tvLoveDetail.text = futureUpright
                     binding.tvReversed.text = futureReversed
                 }

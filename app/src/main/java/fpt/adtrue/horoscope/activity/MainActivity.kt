@@ -4,30 +4,34 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.HomePagerAdapter
+import fpt.adtrue.horoscope.api.Utils.fadeVisibility
 import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.media
 import fpt.adtrue.horoscope.databinding.ActivityMainBinding
+import java.lang.Exception
 import kotlin.system.exitProcess
 
-
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
+class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -37,6 +41,16 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.logoSign.setImageResource(App.getZodiac()[App.SIGN].image)
         binding.slidingTabs.setOnTabSelectedListener(this)
+        try {
+            media?.stop()
+            media?.release()
+            media = MediaPlayer.create(applicationContext, R.raw.bg)
+            media?.start()
+        }catch (ex:Exception){
+            Log.e("MainActivity","___________________ $ex _________")
+        }
+        media!!.isLooping = true
+
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         sttBar(this)
@@ -44,10 +58,12 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
             binding.drawerLayout.openDrawer(Gravity.LEFT)
         }
 
+        binding.data = App.getViewModel()
         binding.versionName.text = "Version Name: ${packageManager.getPackageInfo(packageName, 0).versionName}"
 
         binding.astroProfileBack.setOnClickListener {
-            binding.about.visibility = View.GONE
+            binding.about.fadeVisibility(View.GONE,1000)
+//            binding.about.visibility = View.GONE
         }
         binding.about.setOnClickListener {  }
 
@@ -55,7 +71,9 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu2 -> {
-                    binding.about.visibility = View.VISIBLE
+
+                    binding.about.fadeVisibility(View.VISIBLE)
+//                    binding.about.visibility = View.VISIBLE
                     true
                 }
                 else -> false
@@ -83,6 +101,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                 }
 
                 R.id.contact_us -> {
+//                    media?.pause()
                     val intent = Intent(
                         Intent.ACTION_SENDTO,
                         Uri.fromParts("mailto", "walkinsvicky@gmail.com", null)
@@ -94,13 +113,14 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
                 }
 
                 R.id.rate_us -> {
+//                    media?.pause()
                     rateApp()
                     true
                 }
 
                 R.id.about_us -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    binding.about.visibility = View.VISIBLE
+                    binding.about.fadeVisibility(View.VISIBLE)
 
                     true
                 }
@@ -256,6 +276,7 @@ class MainActivity : AppCompatActivity(), TabLayout.OnTabSelectedListener {
         intent.addFlags(flags)
         return intent
     }
+
 
 
     override fun onTabSelected(tab: TabLayout.Tab?) {}

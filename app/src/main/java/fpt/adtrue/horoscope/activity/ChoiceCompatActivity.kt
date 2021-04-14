@@ -2,13 +2,11 @@ package fpt.adtrue.horoscope.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.azoft.carousellayoutmanager.CarouselLayoutManager
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
 import com.azoft.carousellayoutmanager.CenterScrollListener
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.SignPagerAdapter
 import fpt.adtrue.horoscope.api.Utils.setDataLocal
@@ -17,7 +15,7 @@ import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ActivityCompatChoiceBinding
 
 
-class ChoiceCompatActivity : AppCompatActivity() {
+class ChoiceCompatActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCompatChoiceBinding
 

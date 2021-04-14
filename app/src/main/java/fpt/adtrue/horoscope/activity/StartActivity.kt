@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.HoroscopeApi
 import fpt.adtrue.horoscope.api.Utils
@@ -30,7 +31,7 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-class StartActivity : AppCompatActivity() {
+class StartActivity : BaseActivity() {
 
     private lateinit var binding: ActivityStartBinding
     private val horoscopeApi2: HoroscopeApi = Utils.createRetrofit2()

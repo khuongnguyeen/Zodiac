@@ -3,15 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="data"
-            type="fpt.adtrue.horoscope.viewmodel.HoroscopeViewModel" />
-
-        <import type="android.view.View" />
-    </data>
-
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -484,22 +475,7 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <RelativeLayout
-                    android:id="@+id/relativeLayout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_600sdp"
-                    android:background="@color/black_blur"
-                    android:visibility="@{data.isLoading ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
 
-                    <ProgressBar
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:backgroundTint="@color/red"
-                        tools:ignore="UnusedAttribute" />
-                </RelativeLayout>
 
 
                 <androidx.cardview.widget.CardView
