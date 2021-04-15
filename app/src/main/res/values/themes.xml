@@ -30,6 +30,11 @@
     </style>
 
 
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="android:colorControlActivated" tools:ignore="NewApi">@color/red</item>
+    </style>
+
+
 
     <style name="NavigationView"  parent="Base.Theme.AppCompat">
         <item name="android:listDivider">@color/white</item>
@@ -55,14 +60,4 @@
 
     </style>
 
-    <style name="MyDatePickerTheme" parent="Theme.Horoscope">
-        <item name="colorAccent">@color/white</item>
-    </style>
-
-    <style name="Theme.picker" parent="android:Theme.Holo.Light">
-        <item name="android:editTextStyle">@style/Widget.EditText.White</item>
-    </style>
-    <style name="Widget.EditText.White" parent="@android:style/Widget.EditText">
-        <item name="android:textColor">@color/white</item>
-    </style>
 </resources>

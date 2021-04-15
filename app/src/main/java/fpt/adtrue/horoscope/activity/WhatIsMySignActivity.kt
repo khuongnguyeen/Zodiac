@@ -9,33 +9,38 @@ import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.api.Utils.checkDate
+import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.SIGN
+import fpt.adtrue.horoscope.application.App.Companion.getViewModel
+import fpt.adtrue.horoscope.application.App.Companion.getZodiac
 import fpt.adtrue.horoscope.databinding.ActivityWhatIsMySignBinding
+import fpt.adtrue.horoscope.databinding.ActivityWhatSignBinding
 import java.util.*
 
 
 class WhatIsMySignActivity : BaseActivity(){
 
-    private lateinit var binding: ActivityWhatIsMySignBinding
+    private lateinit var binding: ActivityWhatSignBinding
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_what_is_my_sign)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_what_sign)
 
         binding.wimsValidate.setOnClickListener {
             val day = binding.dp.day
             val mon = binding.dp.month
-            App.SIGN = checkDate(mon, day)
-            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
-            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
-            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
+            SIGN = checkDate(mon, day)
+            getViewModel().getHoroscope(getZodiac()[SIGN].name, "yesterday")
+            getViewModel().getHoroscope(getZodiac()[SIGN].name, "today")
+            getViewModel().getHoroscope(getZodiac()[SIGN].name, "tomorrow")
             val intent = Intent(applicationContext, MainActivity::class.java)
             startActivities(arrayOf(intent))
 
         }
 
-        Utils.sttBar(this)
+        sttBar(this)
 
         binding.wimsBack.setOnClickListener {
             onBackPressed()

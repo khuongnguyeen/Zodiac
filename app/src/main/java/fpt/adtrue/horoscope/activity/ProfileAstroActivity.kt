@@ -13,6 +13,9 @@ import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.api.Utils.capitalizeString
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.SIGN
+import fpt.adtrue.horoscope.application.App.Companion.getSign
+import fpt.adtrue.horoscope.application.App.Companion.getZodiac
 import fpt.adtrue.horoscope.databinding.ActivityAstroProfileBinding
 
 class ProfileAstroActivity : BaseActivity() {
@@ -26,7 +29,7 @@ class ProfileAstroActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_astro_profile)
         val s = intent.getStringExtra("horoscope")
         if (s != null) binding.textView6.text = s
-        binding.tvSignNameAstro.text = App.getZodiac()[App.SIGN].name
+        binding.tvSignNameAstro.text = getZodiac()[SIGN].name
         runnable = Runnable {
             binding.hpBarometre.animate()
                 .setDuration(30000)
@@ -46,9 +49,9 @@ class ProfileAstroActivity : BaseActivity() {
             Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
-        binding.hpSign.setImageResource(App.getZodiac()[App.SIGN].image3)
-        App.getSign().forEach { ok ->
-            if (App.getZodiac()[App.SIGN].name.equals(ok.name, ignoreCase = true)) {
+        binding.hpSign.setImageResource(getZodiac()[SIGN].image3)
+        getSign().forEach { ok ->
+            if (getZodiac()[SIGN].name.equals(ok.name, ignoreCase = true)) {
                 binding.astroProfileTextSign.text = "${ok.description[0]} \n\n ${ok.description[1]}"
                 binding.tvSignColor.text = capitalizeString(ok.color)
                 binding.tvSignElement.text =  capitalizeString(ok.element)

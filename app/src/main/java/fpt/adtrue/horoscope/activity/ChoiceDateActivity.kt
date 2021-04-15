@@ -7,6 +7,7 @@ import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.SIGN
 import fpt.adtrue.horoscope.databinding.ActivityWhatIsMySignBinding
 
 class ChoiceDateActivity: BaseActivity(){
@@ -22,7 +23,7 @@ class ChoiceDateActivity: BaseActivity(){
         binding.wimsValidate.setOnClickListener {
             val day = binding.dp.day
             val mon = binding.dp.month
-            App.SIGN = Utils.checkDate(mon, day)
+            SIGN = Utils.checkDate(mon, day)
             val intent = Intent(applicationContext, ProfileAstroActivity::class.java)
             startActivities(arrayOf(intent))
         }

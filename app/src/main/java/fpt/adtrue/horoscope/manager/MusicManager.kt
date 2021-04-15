@@ -18,6 +18,7 @@ class MusicManager(val context: Context) {
         release()
         mp = MediaPlayer.create(context,path)
         play()
+        mp?.isLooping = true
     }
 
     fun play() = mp?.start()

@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -17,9 +18,16 @@ import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.SignPagerAdapter
 import fpt.adtrue.horoscope.adapter.TarotResultAdapter
 import fpt.adtrue.horoscope.api.Utils
+import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.POSITION_CAREER
+import fpt.adtrue.horoscope.application.App.Companion.POSITION_FUTURE
+import fpt.adtrue.horoscope.application.App.Companion.POSITION_LOVE
+import fpt.adtrue.horoscope.application.App.Companion.getTarot
+import fpt.adtrue.horoscope.broadcast.NotificationActionService
 import fpt.adtrue.horoscope.databinding.ActivityTarotResultsBinding
 
+@Suppress("DEPRECATION")
 class ResultsTarotActivity : Activity(), View.OnTouchListener {
 
     private lateinit var binding: ActivityTarotResultsBinding
@@ -47,16 +55,16 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
         binding.rc.addOnScrollListener(CenterScrollListener())
 
 
-        App.getTarot().forEach {
-            if (it.name == App.POSITION_LOVE) {
+        getTarot().forEach {
+            if (it.name == POSITION_LOVE) {
                 loveUpright = it.keywords.love.upright
                 loveReversed = it.keywords.love.reversed
             }
-            if (it.name == App.POSITION_CAREER) {
+            if (it.name == POSITION_CAREER) {
                 careerUpright = it.keywords.career.upright
                 careerReversed = it.keywords.career.reversed
             }
-            if (it.name == App.POSITION_FUTURE) {
+            if (it.name == POSITION_FUTURE) {
                 futureUpright = it.keywords.future.upright
                 futureReversed = it.keywords.future.reversed
             }
@@ -64,7 +72,7 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
 
         binding.rc.setOnTouchListener(this)
 
-        Utils.sttBar(this)
+        sttBar(this)
 
         binding.compatChoiceBack.setOnClickListener {
             onBackPressed()
@@ -83,6 +91,7 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouch(v: View?, event: MotionEvent): Boolean {
         when(event.action){
             MotionEvent.ACTION_MOVE->{
@@ -101,5 +110,19 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
             }
         }
         return false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("REPLAY")
+        applicationContext!!.sendBroadcast(intent)
+        Log.e("MainActivity","___________________ onResume() _________")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("STOP")
+        applicationContext!!.sendBroadcast(intent)
+        Log.e("MainActivity","___________________ onPause() _________")
     }
 }

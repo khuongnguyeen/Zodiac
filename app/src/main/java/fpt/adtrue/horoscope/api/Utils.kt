@@ -1,11 +1,9 @@
 package fpt.adtrue.horoscope.api
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
 import android.view.View
@@ -222,6 +220,23 @@ object Utils {
         transition.addTarget(this)
         TransitionManager.beginDelayedTransition(this.parent as ViewGroup, transition)
         this.visibility = visibility
+    }
+
+
+    fun getDataLocal(context: Context) {
+        val sharedPreferences: SharedPreferences =
+            context.applicationContext.getSharedPreferences("setting", Context.MODE_PRIVATE)
+        val setting = sharedPreferences.getBoolean("SETTING", false)
+        App.SETTING = setting
+
+        val sharedPreferences2: SharedPreferences = context.getSharedPreferences(
+            "sign",
+            Context.MODE_PRIVATE
+        )
+        val string = sharedPreferences2.getInt("sign", 100)
+        App.SIGN = string
+
+
     }
 
 

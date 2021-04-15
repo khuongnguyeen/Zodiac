@@ -88,4 +88,6 @@ dependencies {
 
     implementation "androidx.percentlayout:percentlayout:1.0.0"
 
+    implementation 'com.kyleduo.switchbutton:library:2.0.3'
+
 }

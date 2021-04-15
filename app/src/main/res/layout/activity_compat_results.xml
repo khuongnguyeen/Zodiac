@@ -146,6 +146,15 @@
                         app:layout_constraintTop_toTopOf="@+id/compat_baro"
                         tools:ignore="UseCompoundDrawables">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            />
+
                         <ImageView
                             android:id="@+id/compat_results_sign_left_img"
                             android:layout_width="@dimen/_30sdp"
@@ -159,6 +168,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/capricorn"
                             android:textAllCaps="true"
+                            android:textStyle="bold"
                             android:textColor="@android:color/white"
                             android:textSize="12sp" />
 
@@ -176,6 +186,17 @@
                         app:layout_constraintStart_toEndOf="@+id/ring_progress"
                         tools:ignore="UseCompoundDrawables">
 
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Him/Her"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            />
+
+
                         <ImageView
                             android:id="@+id/compat_results_sign_right_img"
                             android:layout_width="@dimen/_30sdp"
@@ -189,6 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/aries"
+                            android:textStyle="bold"
                             android:textAllCaps="true"
                             android:textColor="@android:color/white"
                             android:textSize="12sp" />
@@ -223,7 +245,8 @@
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="wrap_content"
-                            android:progressBackgroundTint="@color/white"
+
+                            android:progressDrawable="@drawable/progress_bg_2"
                             android:max="100"
                             android:progress="50" />
 
@@ -256,7 +279,7 @@
                             android:id="@+id/pb_sex"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="@dimen/_80sdp"
-                            android:progressBackgroundTint="@color/white"
+                            android:progressDrawable="@drawable/progress_bg_2"
                             android:layout_height="wrap_content"
                             android:max="100"
                             android:progress="50" />
@@ -289,7 +312,7 @@
                         <ProgressBar
                             android:id="@+id/pb_family"
                             style="?android:attr/progressBarStyleHorizontal"
-                            android:progressBackgroundTint="@color/white"
+                            android:progressDrawable="@drawable/progress_bg_2"
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="wrap_content"
                             android:max="100"
@@ -325,7 +348,7 @@
                         <ProgressBar
                             android:id="@+id/pb_friendship"
                             style="?android:attr/progressBarStyleHorizontal"
-                            android:progressBackgroundTint="@color/white"
+                            android:progressDrawable="@drawable/progress_bg_2"
                             android:layout_width="@dimen/_80sdp"
                             android:layout_height="wrap_content"
                             android:max="100"
@@ -360,8 +383,8 @@
                         <ProgressBar
                             android:id="@+id/pb_business"
                             style="?android:attr/progressBarStyleHorizontal"
-                            android:progressBackgroundTint="@color/white"
                             android:layout_width="@dimen/_80sdp"
+                            android:progressDrawable="@drawable/progress_bg_2"
                             android:layout_height="wrap_content"
                             android:max="100"
                             android:progress="50" />

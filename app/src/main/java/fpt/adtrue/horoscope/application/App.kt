@@ -20,11 +20,7 @@ class App:Application() {
         fun getSign() = dataSign
         private val dataTarot = mutableListOf<DataTarot>()
         fun getTarot() = dataTarot
-
-
         var media: MediaPlayer?=null
-
-
         private val dataTarot2 = MutableLiveData<DataAmazonaws>()
         fun getTarot2() = dataTarot2
         private val dataTarot3 = MutableLiveData<DataAmazonaws>()
@@ -36,7 +32,7 @@ class App:Application() {
         var POSITION_LOVE = ""
         var POSITION_CAREER = ""
         var POSITION_FUTURE = ""
-
+        var SETTING = false
 
 
     }

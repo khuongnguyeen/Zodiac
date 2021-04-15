@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="nav_header_height">100dp</dimen>
-    <dimen name="navigation_drawer_width">260dp</dimen>
     <dimen name="card_width">@dimen/_80sdp</dimen>
     <dimen name="card_height">@dimen/_135sdp</dimen>
-    <dimen name="card_height_2">@dimen/_540sdp</dimen>
-    <dimen name="card_half_width">@dimen/_80sdp</dimen>
-    <dimen name="card_half_height">@dimen/_135sdp</dimen>
-    <dimen name="card_double_width">@dimen/_160sdp</dimen>
     <dimen name="card_double_height">@dimen/_520sdp</dimen>
-    <dimen name="card_top_margin">170dp</dimen>
     <dimen name="size_back">@dimen/_15sdp</dimen>
     <dimen name="height_size_bar">@dimen/_30sdp</dimen>
     <dimen name="size_margin_top">@dimen/_54sdp</dimen>

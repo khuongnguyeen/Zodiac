@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import fpt.adtrue.horoscope.BaseActivity
@@ -15,8 +15,9 @@ import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.adapter.StartReadingTarotAdapter
 import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.getViewModel
 import fpt.adtrue.horoscope.databinding.TarotReadingActivityBinding
-import fpt.adtrue.horoscope.tarot3.TarotCircleCardActivity
+import fpt.adtrue.horoscope.tarot.TarotCircleCardActivity
 
 class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITarot {
 
@@ -25,7 +26,7 @@ class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITaro
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.tarot_reading_activity)
-        App.getViewModel().data.observe(this,  {
+        getViewModel().data.observe(this,  {
             binding.tvToday.text = it.currentDate
         })
 
@@ -51,10 +52,10 @@ class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITaro
         if (position == 0) {
             TarotCircleCardActivity.start(this)
         } else {
-            binding.rlLo.visibility = View.VISIBLE
+            binding.rlLo.visibility = VISIBLE
             binding.logo.playAnimation()
             val enableButton = Runnable {
-                binding.rlLo.visibility = View.GONE
+                binding.rlLo.visibility = GONE
             }
             Handler(Looper.getMainLooper()).postDelayed(enableButton, 2000)
 

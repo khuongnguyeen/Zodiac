@@ -54,37 +54,86 @@
         </RelativeLayout>
 
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_200sdp"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+
             app:layout_constraintBottom_toTopOf="@+id/wims_validate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/wims_title_layout"
             app:layout_constraintVertical_bias="0.493">
 
+
+            <TextView
+                android:id="@+id/tv_your"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Your Birthday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.ycuwq.datepicker.date.DatePicker
+                android:id="@+id/dp_me"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/black"
+                app:itemTextColor="@color/white"
+                app:itemTextSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_your"
+                app:selectedTextSize="@dimen/_20sdp"
+                app:wheelCurtain="false"
+                app:wheelCurtainBorderColor="@color/transparent"
+                app:zoomInSelectedItem="true" />
+
+
+            <TextView
+                android:id="@+id/tv_her"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Him/Her Birthday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dp_me" />
+
             <com.ycuwq.datepicker.date.DatePicker
                 android:id="@+id/dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/black"
                 app:itemTextColor="@color/white"
-                app:itemTextSize="@dimen/_16ssp"
-
-                app:wheelCurtainBorderColor="@color/transparent"
-                android:background="@drawable/background_v2"
-                app:selectedTextColor="@color/red"
-                app:selectedTextSize="@dimen/_30sdp"
+                app:itemTextSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_her"
+                app:selectedTextSize="@dimen/_20sdp"
                 app:wheelCurtain="false"
+                app:wheelCurtainBorderColor="@color/transparent"
+                app:wheelCurtainColor="@color/red"
                 app:zoomInSelectedItem="true" />
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
             android:id="@+id/wims_validate"
             android:layout_width="@dimen/_250sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="56dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

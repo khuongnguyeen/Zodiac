@@ -1,15 +1,13 @@
 package fpt.adtrue.horoscope.activity
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View.GONE
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
@@ -19,8 +17,18 @@ import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.HoroscopeApi
 import fpt.adtrue.horoscope.api.Utils
+import fpt.adtrue.horoscope.api.Utils.createRetrofit2
+import fpt.adtrue.horoscope.api.Utils.getDataLocal
 import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.SETTING
+import fpt.adtrue.horoscope.application.App.Companion.SIGN
+import fpt.adtrue.horoscope.application.App.Companion.getTarot2
+import fpt.adtrue.horoscope.application.App.Companion.getTarot3
+import fpt.adtrue.horoscope.application.App.Companion.getTarot4
+import fpt.adtrue.horoscope.application.App.Companion.getViewModel
+import fpt.adtrue.horoscope.application.App.Companion.getZodiac
+import fpt.adtrue.horoscope.broadcast.NotificationActionService
 import fpt.adtrue.horoscope.databinding.ActivityStartBinding
 import fpt.adtrue.horoscope.fragment.ChooseSign
 import fpt.adtrue.horoscope.model.*
@@ -29,62 +37,59 @@ import io.reactivex.schedulers.Schedulers
 import java.io.*
 import java.lang.reflect.Type
 import java.util.*
+import java.util.Calendar.*
 
 
+@Suppress("NAME_SHADOWING")
 class StartActivity : BaseActivity() {
 
     private lateinit var binding: ActivityStartBinding
-    private val horoscopeApi2: HoroscopeApi = Utils.createRetrofit2()
+    private val horoscopeApi2: HoroscopeApi = createRetrofit2()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getDataLocal(applicationContext)
+        if (!SETTING) {
+            val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("PLAY")
+            applicationContext!!.sendBroadcast(intent)
+        }
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start)
         getSign()
         getCompatibility()
-        getDataLocal()
         sttBar(this)
         getDaSi()
         getTarot()
         addImgTarot()
         val enableButton = Runnable {
-            if (App.SIGN == 100) {
-
-                binding.logo.visibility = View.GONE
+            if (SIGN == 100) {
+                binding.logo.visibility = GONE
                 val fr1 = ChooseSign()
                 val active: Fragment = fr1
                 val manager = supportFragmentManager
                 manager.beginTransaction().hide(active).show(fr1).commit()
-
                 manager.beginTransaction().add(R.id.content, fr1, "1").commit()
             } else {
-
-                App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
-                App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
-                App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
+                getViewModel().getHoroscope(getZodiac()[SIGN].name, "yesterday")
+                getViewModel().getHoroscope(getZodiac()[SIGN].name, "today")
+                getViewModel().getHoroscope(getZodiac()[SIGN].name, "tomorrow")
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivities(arrayOf(intent))
-
             }
         }
         Handler().postDelayed(enableButton, 2000)
-
-
-
-        val calendar = Calendar.getInstance(TimeZone.getDefault()) as Calendar
-        var mon = "${calendar.get(Calendar.MONTH) + 1}"
-        var day = "${calendar.get(Calendar.DAY_OF_MONTH)}"
-
-        var yesterday = "${calendar.get(Calendar.DAY_OF_MONTH) - 1}"
-        var tomorrow = "${calendar.get(Calendar.DAY_OF_MONTH) + 1}"
-
-        val res = calendar.getActualMaximum(Calendar.DATE)
+        val calendar = getInstance(TimeZone.getDefault()) as Calendar
+        var mon = "${calendar.get(MONTH) + 1}"
+        var day = "${calendar.get(DAY_OF_MONTH)}"
+        var yesterday = "${calendar.get(DAY_OF_MONTH) - 1}"
+        var tomorrow = "${calendar.get(DAY_OF_MONTH) + 1}"
+        val res = calendar.getActualMaximum(DATE)
         if (day.toInt() == res) {
             tomorrow = "1"
-            mon = "${calendar.get(Calendar.MONTH) + 2}"
+            mon = "${calendar.get(MONTH) + 2}"
         }
         if (day.toInt() == 1) {
-            yesterday = "${calendar.getActualMaximum(Calendar.DATE - 1)}"
-            mon = "${calendar.get(Calendar.MONTH) }"
+            yesterday = "${calendar.getActualMaximum(DATE - 1)}"
+            mon = "${calendar.get(MONTH)}"
         }
         if (mon.toInt() < 10) {
             mon = "0$mon"
@@ -98,14 +103,9 @@ class StartActivity : BaseActivity() {
         if (tomorrow.toInt() < 10) {
             tomorrow = "0$tomorrow"
         }
-
-
-        getAmazon(yesterday, mon, calendar.get(Calendar.YEAR), App.getTarot2())
-        getAmazon(day, mon, calendar.get(Calendar.YEAR), App.getTarot3())
-        getAmazon(tomorrow, mon, calendar.get(Calendar.YEAR), App.getTarot4())
-
-
-
+        getAmazon(yesterday, mon, calendar.get(YEAR), getTarot2())
+        getAmazon(day, mon, calendar.get(YEAR), getTarot3())
+        getAmazon(tomorrow, mon, calendar.get(YEAR), getTarot4())
 //        val notifyMe = NotifyMe.Builder(applicationContext)
 //        notifyMe.title("Horoscope")
 //        notifyMe.content(String content)
@@ -121,7 +121,7 @@ class StartActivity : BaseActivity() {
 
     @SuppressLint("CheckResult")
     fun getAmazon(day: String, mon: String, year: Int, data: MutableLiveData<DataAmazonaws>) {
-        App.getViewModel().isLoading.set(true)
+        getViewModel().isLoading.set(true)
         horoscopeApi2.getDataAmazon(day, mon, year)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
@@ -129,12 +129,12 @@ class StartActivity : BaseActivity() {
                 {
                     data.value = it
                     Log.e("getAmazon__________", Gson().toJson(it))
-                    App.getViewModel().isLoading.set(false)
+                    getViewModel().isLoading.set(false)
                 },
                 {
                     Log.e("getAmazon", Gson().toJson(it))
 
-                    App.getViewModel().isLoading.set(false)
+                    getViewModel().isLoading.set(false)
                 })
     }
 
@@ -157,22 +157,14 @@ class StartActivity : BaseActivity() {
             App.getCom().clear()
             App.getCom().addAll(gSon.fromJson<MutableList<DataCompatibilityItem>>(jsonString, type))
         }
-        Log.e("Start Activity", "Thanhf coong compability")
     }
 
-    private fun addImgTarot(){
+    private fun addImgTarot() {
         App.getTarot().forEach {
-
             val a = it.name.toLowerCase(Locale.ROOT).replace(" ", "_")
             val resources: Resources = applicationContext.resources
-            val resourceId: Int = resources.getIdentifier(
-                a,
-                "drawable",
-                applicationContext.packageName
-            )
-            // return like: R.drawable.eskb048.png
+            val resourceId: Int = resources.getIdentifier(a, "drawable", applicationContext.packageName)
             it.img = resourceId
-
         }
     }
 
@@ -194,7 +186,6 @@ class StartActivity : BaseActivity() {
             App.getSign().clear()
             App.getSign().addAll(gSon.fromJson<MutableList<DataSignItem>>(jsonString, type))
         }
-        Log.e("Start Activity", "tc sign")
     }
 
     private fun getTarot() {
@@ -231,27 +222,18 @@ class StartActivity : BaseActivity() {
         val v10 = DataZodiac("Capricorn", R.drawable.s10_wh, R.drawable.s10_hp, R.drawable.s10_or)
         val v11 = DataZodiac("Aquarius", R.drawable.s11_wh, R.drawable.s11_hp, R.drawable.s11_or)
         val v12 = DataZodiac("Pisces", R.drawable.s12_wh, R.drawable.s12_hp, R.drawable.s12_or)
-        App.getZodiac().add(v1)
-        App.getZodiac().add(v2)
-        App.getZodiac().add(v3)
-        App.getZodiac().add(v4)
-        App.getZodiac().add(v5)
-        App.getZodiac().add(v6)
-        App.getZodiac().add(v7)
-        App.getZodiac().add(v8)
-        App.getZodiac().add(v9)
-        App.getZodiac().add(v10)
-        App.getZodiac().add(v11)
-        App.getZodiac().add(v12)
-    }
-
-    private fun getDataLocal() {
-        val sharedPreferences: SharedPreferences = applicationContext.getSharedPreferences(
-            "sign",
-            Context.MODE_PRIVATE
-        )
-        val string = sharedPreferences.getInt("sign", 100)
-        App.SIGN = string
+        getZodiac().add(v1)
+        getZodiac().add(v2)
+        getZodiac().add(v3)
+        getZodiac().add(v4)
+        getZodiac().add(v5)
+        getZodiac().add(v6)
+        getZodiac().add(v7)
+        getZodiac().add(v8)
+        getZodiac().add(v9)
+        getZodiac().add(v10)
+        getZodiac().add(v11)
+        getZodiac().add(v12)
     }
 
     override fun onBackPressed() {}

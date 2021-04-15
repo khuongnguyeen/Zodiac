@@ -3,18 +3,27 @@ package fpt.adtrue.horoscope.activity
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.DialogInterface.BUTTON_NEGATIVE
+import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
-import android.media.MediaPlayer
+import android.content.Intent.*
+import android.content.SharedPreferences
 import android.net.Uri
+import android.net.Uri.parse
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import android.view.Gravity.LEFT
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.view.Window.FEATURE_NO_TITLE
+import android.widget.ImageView
+import android.widget.Switch
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
+import android.widget.Toast.makeText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -25,9 +34,13 @@ import fpt.adtrue.horoscope.adapter.HomePagerAdapter
 import fpt.adtrue.horoscope.api.Utils.fadeVisibility
 import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
-import fpt.adtrue.horoscope.application.App.Companion.media
+import fpt.adtrue.horoscope.application.App.Companion.SETTING
+import fpt.adtrue.horoscope.application.App.Companion.SIGN
+import fpt.adtrue.horoscope.application.App.Companion.getViewModel
+import fpt.adtrue.horoscope.application.App.Companion.getZodiac
+import fpt.adtrue.horoscope.broadcast.NotificationActionService
 import fpt.adtrue.horoscope.databinding.ActivityMainBinding
-import java.lang.Exception
+import java.lang.String.format
 import kotlin.system.exitProcess
 
 @Suppress("DEPRECATION")
@@ -39,41 +52,33 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.logoSign.setImageResource(App.getZodiac()[App.SIGN].image)
+        binding.logoSign.setImageResource(getZodiac()[SIGN].image)
         binding.slidingTabs.setOnTabSelectedListener(this)
-        try {
-            media?.stop()
-            media?.release()
-            media = MediaPlayer.create(applicationContext, R.raw.bg)
-            media?.start()
-        }catch (ex:Exception){
-            Log.e("MainActivity","___________________ $ex _________")
-        }
-        media!!.isLooping = true
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         sttBar(this)
         binding.toolbar.setNavigationOnClickListener {
-            binding.drawerLayout.openDrawer(Gravity.LEFT)
+            binding.drawerLayout.openDrawer(LEFT)
         }
 
-        binding.data = App.getViewModel()
-        binding.versionName.text = "Version Name: ${packageManager.getPackageInfo(packageName, 0).versionName}"
+        binding.data = getViewModel()
+        binding.versionName.text =
+            "Version Name: ${packageManager.getPackageInfo(packageName, 0).versionName}"
 
         binding.astroProfileBack.setOnClickListener {
-            binding.about.fadeVisibility(View.GONE,1000)
-//            binding.about.visibility = View.GONE
+            binding.about.fadeVisibility(GONE, 1000)
         }
-        binding.about.setOnClickListener {  }
-
-
+        binding.about.setOnClickListener {}
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu2 -> {
+                    binding.about.fadeVisibility(VISIBLE)
+                    true
+                }
 
-                    binding.about.fadeVisibility(View.VISIBLE)
-//                    binding.about.visibility = View.VISIBLE
+                R.id.setting -> {
+                    showDialog()
                     true
                 }
                 else -> false
@@ -101,7 +106,6 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
                 }
 
                 R.id.contact_us -> {
-//                    media?.pause()
                     val intent = Intent(
                         Intent.ACTION_SENDTO,
                         Uri.fromParts("mailto", "walkinsvicky@gmail.com", null)
@@ -113,7 +117,6 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
                 }
 
                 R.id.rate_us -> {
-//                    media?.pause()
                     rateApp()
                     true
                 }
@@ -121,7 +124,6 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
                 R.id.about_us -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                     binding.about.fadeVisibility(View.VISIBLE)
-
                     true
                 }
 
@@ -224,7 +226,6 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
             }
         }
 
-
 //        val runTab = Runnable {
 //            if (binding.slidingTabs.width < this.resources.displayMetrics.widthPixels) {
 //                binding.slidingTabs.tabMode = TabLayout.MODE_FIXED
@@ -248,8 +249,6 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
             val enableButton = Runnable { binding.logoSign.isEnabled = true }
             Handler().postDelayed(enableButton, 1000)
         }
-
-
     }
 
     private fun rateApp() {
@@ -263,21 +262,16 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
     }
 
     private fun rateIntentForUrl(url: String): Intent {
-        val intent = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse(String.format("%s?id=%s", url, applicationContext.packageName))
-        )
-        var flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
+        val intent = Intent(ACTION_VIEW, parse(format("%s?id=%s", url, applicationContext.packageName)))
+        var flags = FLAG_ACTIVITY_NO_HISTORY or FLAG_ACTIVITY_MULTIPLE_TASK
         flags = if (Build.VERSION.SDK_INT >= 21) {
-            flags or Intent.FLAG_ACTIVITY_NEW_DOCUMENT
+            flags or FLAG_ACTIVITY_NEW_DOCUMENT
         } else {
-            flags or Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
+            flags or FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET
         }
         intent.addFlags(flags)
         return intent
     }
-
-
 
     override fun onTabSelected(tab: TabLayout.Tab?) {}
 
@@ -285,11 +279,42 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
     override fun onTabReselected(tab: TabLayout.Tab?) {}
 
-//    private fun setNavigationDrawer() {
-//        binding.navView.setNavigationItemSelectedListener {
-//            true
-//        }
-//    }
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
+    private fun showDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_setting)
+        val yesBtn = dialog.findViewById(R.id.iv_close) as ImageView
+        val noBtn = dialog.findViewById(R.id.switch1) as Switch
+        yesBtn.setOnClickListener { dialog.dismiss() }
+        noBtn.isChecked = SETTING
+        noBtn.setOnCheckedChangeListener { _, isChecked ->
+            when (isChecked) {
+                true -> {
+                    SETTING = true
+                    setDataLocal(SETTING)
+                    val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("STOP")
+                    applicationContext.sendBroadcast(intent)
+                }
+                false -> {
+                    SETTING = false
+                    setDataLocal(SETTING)
+                    val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("PLAY")
+                    applicationContext.sendBroadcast(intent)
+                }
+            }
+        }
+        dialog.show()
+    }
+
+    private fun setDataLocal(setting: Boolean) {
+        val sharedPreferences: SharedPreferences =
+            applicationContext.getSharedPreferences("setting", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putBoolean("SETTING", setting)
+        editor.apply()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.mymenu, menu)
@@ -297,7 +322,7 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(applicationContext, "Font Size", Toast.LENGTH_SHORT).show()
+        makeText(applicationContext, "Font Size", LENGTH_SHORT).show()
 
         return super.onOptionsItemSelected(item)
     }
@@ -305,15 +330,11 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
     override fun onBackPressed() {
         val alertDialog = AlertDialog.Builder(this).create()
         alertDialog.setTitle(R.string.do_you_really_want_to_exit)
-        alertDialog.setButton(
-            Dialog.BUTTON_POSITIVE, "Yes"
-        ) { _, _ ->
+        alertDialog.setButton(BUTTON_POSITIVE, "Yes") { _, _ ->
             finishAffinity()
             exitProcess(0)
         }
-        alertDialog.setButton(
-            Dialog.BUTTON_NEGATIVE, "No"
-        ) { dialog, _ -> dialog!!.dismiss() }
+        alertDialog.setButton(BUTTON_NEGATIVE, "No") { dialog, _ -> dialog!!.dismiss() }
         alertDialog.show()
     }
 }

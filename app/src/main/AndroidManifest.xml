@@ -46,13 +46,17 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ChoiceSignHerActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".tarot3.TarotCircleCardActivity"
+        <activity android:name=".tarot.TarotCircleCardActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.ResultsTarotActivity"
             android:theme="@style/Theme.Translucent"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.StartReadingTarotActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".BaseActivity"
+            android:screenOrientation="portrait"/>
+        <receiver android:name=".broadcast.NotificationActionService"/>
+        <service android:name=".manager.HoroscopeService"/>
     </application>
 
 </manifest>
