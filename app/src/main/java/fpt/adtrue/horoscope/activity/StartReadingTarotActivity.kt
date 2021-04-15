@@ -9,6 +9,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
@@ -26,7 +27,7 @@ class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITaro
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.tarot_reading_activity)
-        getViewModel().data.observe(this,  {
+        getViewModel().data.observe(this, Observer {
             binding.tvToday.text = it.currentDate
         })
 

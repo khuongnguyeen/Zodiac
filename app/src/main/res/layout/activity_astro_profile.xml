@@ -5,15 +5,20 @@
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/paywall_bg"
+        android:background="@color/bg"
         >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_galaxy"
+            android:scaleType="centerCrop"
+            android:alpha="0.15"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/astro_profile_top_bar"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@color/black_blur"
             android:gravity="center_vertical">
 
 
@@ -46,7 +51,8 @@
                 android:layout_height="fill_parent"
                 android:layout_marginEnd="@dimen/_25sdp"
                 android:gravity="center"
-                android:text="@string/menu_item_24_txt"
+                android:textStyle="bold"
+                android:text="@string/capricorn"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/size_text_top"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +91,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="56dp"
-                        android:alpha="0.9"
+                        android:alpha="0"
                         android:src="@drawable/homepage_baro"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -94,8 +100,8 @@
 
                     <ImageView
                         android:id="@+id/hp_sign"
-                        android:layout_width="60.0dip"
-                        android:layout_height="60.0dip"
+                        android:layout_width="@dimen/_160sdp"
+                        android:layout_height="@dimen/_160sdp"
                         android:layout_centerHorizontal="true"
                         android:src="@drawable/s1_or"
                         app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
@@ -389,10 +395,9 @@
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_5sdp"
-                    android:layout_marginTop="10dp"
+                    android:layout_margin="@dimen/_10sdp"
                     app:cardCornerRadius="@dimen/_10sdp"
-                    app:cardBackgroundColor="@color/black_blur"
+                    app:cardBackgroundColor="@color/bg_child"
                     app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -410,74 +415,84 @@
                 </androidx.cardview.widget.CardView>
 
 
-               <androidx.cardview.widget.CardView
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_margin="@dimen/_5sdp"
-                   app:cardCornerRadius="@dimen/_10sdp"
-                   app:cardBackgroundColor="@color/black_blur"
-                   app:cardElevation="0dp"
-                   app:layout_constraintBottom_toBottomOf="parent"
-                   app:layout_constraintEnd_toEndOf="parent"
-                   app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toBottomOf="@+id/cardView">
-                   <LinearLayout
-                       android:id="@+id/astro_profile_redir_chat_layout"
-                       android:layout_width="fill_parent"
-                       android:layout_height="wrap_content"
-                       android:layout_marginBottom="1dp"
-                       android:orientation="vertical"
-                       android:paddingBottom="@dimen/_10sdp">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_bot_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    app:cardBackgroundColor="@color/black_blur"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-                       <ImageView
-                           android:id="@+id/imageView"
-                           android:layout_width="fill_parent"
-                           android:layout_height="wrap_content"
-                           android:adjustViewBounds="true"
-                           android:src="@drawable/hp_redir_chat" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/homepage_redir_chat_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_10sdp">
 
-                       <TextView
-                           android:id="@+id/astro_profile_redir_chat_title"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_margin="@dimen/_10sdp"
-                           android:text="@string/menu_item1_txt"
-                           android:textAllCaps="true"
-                           android:textColor="@color/orange"
-                           android:textSize="@dimen/size_text_title" />
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView2"
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="@dimen/_70sdp"
+                            android:gravity="center_vertical"
+                            app:cardCornerRadius="18dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                       <fpt.adtrue.horoscope.customview.JustifyTextView
-                           android:id="@+id/astro_profile_redir_chat_text"
-                           android:layout_width="fill_parent"
-                           android:layout_height="wrap_content"
-                           android:layout_marginStart="@dimen/_10sdp"
-                           android:layout_marginEnd="@dimen/_10sdp"
-                           android:layout_marginBottom="@dimen/_10sdp"
-                           android:text="Do not keep those confusing thoughts to youself. \nOur best psychics are waiting to answer all your questions."
-                           android:textColor="@color/white"
-                           android:textSize="@dimen/size_text_no" />
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/s1_wh" />
+                        </androidx.cardview.widget.CardView>
 
-                       <RelativeLayout
-                           android:id="@+id/astro_profile_redir_chat_button"
-                           android:layout_width="@dimen/size_width_button"
-                           android:layout_height="@dimen/size_height_button"
-                           android:layout_gravity="center"
-                           android:background="@drawable/bg_sign_home"
-                           android:gravity="center">
 
-                           <TextView
-                               android:id="@+id/astro_profile_redir_chat_button_text"
-                               android:layout_width="fill_parent"
-                               android:layout_height="wrap_content"
-                               android:gravity="center"
-                               android:maxLines="1"
-                               android:text="@string/a_doubt_a_question"
-                               android:textColor="@android:color/white"
-                               android:textSize="@dimen/size_text_no" />
-                       </RelativeLayout>
-                   </LinearLayout>
-               </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/homepage_redir_chat_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:text="Do not keep those confusing thoughts to youself. \nOur best psychics are waiting to answer all your questions."
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_text_no"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/homepage_redir_chat_button"
+                            app:layout_constraintStart_toEndOf="@+id/cardView2"
+                            app:layout_constraintTop_toTopOf="parent" />
 
+                        <RelativeLayout
+                            android:id="@+id/homepage_redir_chat_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/bg_button_0k"
+                            android:gravity="center"
+                            android:padding="@dimen/_10sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/homepage_redir_chat_button_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Send"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/size_text_no"
+                                android:textStyle="bold"
+                                tools:ignore="HardcodedText" />
+                        </RelativeLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

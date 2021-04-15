@@ -5,14 +5,18 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import fpt.adtrue.horoscope.activity.ChoiceCompatActivity
 import fpt.adtrue.horoscope.activity.ProfileAstroActivity
 import fpt.adtrue.horoscope.activity.StartReadingTarotActivity
+import fpt.adtrue.horoscope.adapter.NewApiAdapter
 import fpt.adtrue.horoscope.api.HoroscopeApi
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
@@ -22,68 +26,55 @@ import fpt.adtrue.horoscope.model.DataHoroscope
 class FragmentHomePager(private val position: Int) : Fragment() {
 
     private lateinit var binding: PagerItemRecyclerviewBinding
-    private var runnable: Runnable? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = PagerItemRecyclerviewBinding.inflate(inflater, container, false)
-        runnable = Runnable {
-            binding.hpBarometre.animate()
-                .setDuration(30000)
-                .rotationBy(360F)
-                .setInterpolator(LinearInterpolator())
-                .withEndAction(runnable)
-                .start()
-        }
-        runnable!!.run()
-        binding.hpSign.setImageResource(App.getZodiac()[App.SIGN].image2)
+
 
         if (position == 0) {
-            App.getTarot2().observe(this, { ok ->
+            App.getTarot2().observe(this, Observer{ ok ->
                 ok.daily_horoscope.forEach {
                     if (it.name.equals(App.getZodiac()[App.SIGN].name, true)) {
                         binding.tvDescription.text = it.sign.general
-                        binding.tvDescriptLove.text = it.sign.love
-                        binding.tvDescriptWork.text = it.sign.work
-                        binding.tvDescriptMoney.text = it.sign.money
+                        binding.rc.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        binding.rc.adapter = NewApiAdapter(it.sign.love,it.sign.work,it.sign.money)
                     }
                 }
             })
-            App.getViewModel().data2.observe(this, {
+            App.getViewModel().data2.observe(this, Observer {
                 updateData(it)
             })
         }
 
         if (position == 1) {
-            App.getTarot3().observe(this, { ok ->
+            App.getTarot3().observe(this, Observer { ok ->
                 ok.daily_horoscope.forEach {
                     if (it.name.equals(App.getZodiac()[App.SIGN].name, true)) {
                         binding.tvDescription.text = it.sign.general
-                        binding.tvDescriptLove.text = it.sign.love
-                        binding.tvDescriptWork.text = it.sign.work
-                        binding.tvDescriptMoney.text = it.sign.money
+                        binding.rc.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        binding.rc.adapter = NewApiAdapter(it.sign.love,it.sign.work,it.sign.money)
                     }
                 }
             })
-            App.getViewModel().data.observe(this, {
+            App.getViewModel().data.observe(this,Observer {
                 updateData(it)
             })
         }
 
         if (position == 2) {
-            App.getTarot4().observe(this, { ok ->
+            App.getTarot4().observe(this,Observer { ok ->
                 ok.daily_horoscope.forEach {
                     if (it.name.equals(App.getZodiac()[App.SIGN].name, true)) {
                         binding.tvDescription.text = it.sign.general
-                        binding.tvDescriptLove.text = it.sign.love
-                        binding.tvDescriptWork.text = it.sign.work
-                        binding.tvDescriptMoney.text = it.sign.money
+                        binding.rc.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                        binding.rc.adapter = NewApiAdapter(it.sign.love,it.sign.work,it.sign.money)
                     }
                 }
             })
-            App.getViewModel().data1.observe(this, {
+            App.getViewModel().data1.observe(this,Observer {
                 updateData(it)
             })
         }
@@ -93,7 +84,7 @@ class FragmentHomePager(private val position: Int) : Fragment() {
             context!!.startActivities(arrayOf(intent))
             binding.homepageRedirCompat.isEnabled = false
             val enableButton = Runnable { binding.homepageRedirCompat.isEnabled = true }
-            Handler().postDelayed(enableButton, 1000)
+            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
         binding.homepageTarot.setOnClickListener {
@@ -111,7 +102,7 @@ class FragmentHomePager(private val position: Int) : Fragment() {
             startActivity(Intent.createChooser(intent, "Choose apps to connect with us :"))
             binding.homepageRedirChatButton.isEnabled = false
             val enableButton = Runnable { binding.homepageRedirChatButton.isEnabled = true }
-            Handler().postDelayed(enableButton, 1000)
+            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
         binding.homepageRedirCompat.setOnClickListener {
@@ -119,7 +110,7 @@ class FragmentHomePager(private val position: Int) : Fragment() {
             context!!.startActivities(arrayOf(intent))
             binding.homepageRedirCompat.isEnabled = false
             val enableButton = Runnable { binding.homepageRedirCompat.isEnabled = true }
-            Handler().postDelayed(enableButton, 1000)
+            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
         return binding.root
@@ -127,7 +118,6 @@ class FragmentHomePager(private val position: Int) : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun updateData(it: DataHoroscope) {
-        binding.homepageRecap.text = "${App.getZodiac()[App.SIGN].name} - ${it.currentDate}"
         binding.tvDescriptionCompatibility.text = it.compatibility
         binding.tvDescriptionMood.text = it.mood
         binding.tvDescriptionColor.text = it.color

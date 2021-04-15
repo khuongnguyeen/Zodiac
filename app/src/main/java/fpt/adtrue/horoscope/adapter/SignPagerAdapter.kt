@@ -16,8 +16,7 @@ class SignPagerAdapter :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TarotHolder, position: Int) {
-        holder.binding.hihihi.setImageResource(App.getZodiac()[position].image)
-        holder.binding.tvHihi.text = App.getZodiac()[position].name
+        holder.binding.hihihi.setImageResource(App.getZodiac()[position].image2)
     }
 
     override fun getItemCount() = 12

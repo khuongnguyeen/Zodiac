@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import fpt.adtrue.horoscope.fragment.FragmentHomePager
 
+@Suppress("DEPRECATION")
 class HomePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
 
@@ -25,10 +26,10 @@ class HomePagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
 
     override fun getPageTitle(position: Int): CharSequence {
-        when (position) {
-            0 -> return "Yesterday"
-            1 -> return "Today"
-            else -> return "Tomorrow"
+        return when (position) {
+            0 -> "Yesterday"
+            1 -> "Today"
+            else -> "Tomorrow"
         }
     }
 }

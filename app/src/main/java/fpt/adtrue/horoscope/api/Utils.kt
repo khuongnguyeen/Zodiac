@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package fpt.adtrue.horoscope.api
 
 import android.app.Activity

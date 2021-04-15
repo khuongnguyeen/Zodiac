@@ -6,6 +6,7 @@ import android.text.StaticLayout
 import android.util.AttributeSet
 import kotlin.math.ceil
 
+@Suppress("NAME_SHADOWING")
 class JustifyTextView(context: Context?, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatTextView(
     context!!, attrs) {
     private var mLineY = 0
@@ -33,7 +34,7 @@ class JustifyTextView(context: Context?, attrs: AttributeSet?) : androidx.appcom
             val width = StaticLayout.getDesiredWidth(text, lineStart, lineEnd, getPaint())
             val line = text.substring(lineStart, lineEnd)
             if (needScale(line) && i < layout.lineCount - 1) {
-                drawScaledText(canvas, lineStart, line, width)
+                drawScaledText(canvas, line, width)
             } else {
                 canvas.drawText(line, 0f, mLineY.toFloat(), paint)
             }
@@ -41,10 +42,10 @@ class JustifyTextView(context: Context?, attrs: AttributeSet?) : androidx.appcom
         }
     }
 
-    private fun drawScaledText(canvas: Canvas, lineStart: Int, line: String, lineWidth: Float) {
+    private fun drawScaledText(canvas: Canvas, line: String, lineWidth: Float) {
         var line = line
         var x = 0f
-        if (isFirstLineOfParagraph(lineStart, line)) {
+        if (isFirstLineOfParagraph( line)) {
             val blanks = "  "
             canvas.drawText(blanks, x, mLineY.toFloat(), paint)
             val bw = StaticLayout.getDesiredWidth(blanks, paint)
@@ -70,7 +71,7 @@ class JustifyTextView(context: Context?, attrs: AttributeSet?) : androidx.appcom
         }
     }
 
-    private fun isFirstLineOfParagraph(lineStart: Int, line: String): Boolean {
+    private fun isFirstLineOfParagraph(line: String): Boolean {
         return line.length > 3 && line[0] == ' ' && line[1] == ' '
     }
 

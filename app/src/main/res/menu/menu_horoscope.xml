@@ -8,110 +8,28 @@
     <group>
         <item
             android:id="@+id/person_horo"
-            android:icon="@drawable/amour_1"
+            android:icon="@drawable/ic_amour_1"
             android:title="@string/menu_item_21_txt" />
         <item
             android:id="@+id/my_as_profile"
-            android:icon="@drawable/amour_3"
+            android:icon="@drawable/ic_amour_3"
             android:title="@string/menu_item_22_txt" />
         <item
             android:id="@+id/tarot"
-            android:icon="@drawable/amour_4"
+            android:icon="@drawable/ic_amour_4"
             android:title="Tarot" />
         <item
             android:id="@+id/contact_us"
-            android:icon="@drawable/contact_form"
+            android:icon="@drawable/ic_contact_form"
             android:title="Feedback" />
         <item
             android:id="@+id/rate_us"
-            android:icon="@drawable/star_of_favorites"
+            android:icon="@drawable/star_of_favourites"
             android:title="Rate Us" />
         <item
             android:id="@+id/about_us"
-            android:icon="@drawable/browser"
+            android:icon="@drawable/ic_browser"
             android:title="About Us" />
 
-    </group>
-    <group android:checkableBehavior="single">
-        <item
-            android:icon="@drawable/amour_3"
-            android:title="Zodiac"
-            
-            >
-            <menu>
-                <item
-                    android:id="@+id/action_aries"
-                    android:enabled="true"
-                    android:textSize="@dimen/_2sdp"
-                    android:icon="@drawable/s1_or"
-                    android:title="@string/aries" />
-                <item
-                    android:id="@+id/action_taurus"
-                    android:enabled="true"
-                    android:icon="@drawable/s2_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/taurus" />
-                <item
-                    android:id="@+id/action_gemini"
-                    android:enabled="true"
-                    android:icon="@drawable/s3_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/gemini" />
-                <item
-                    android:id="@+id/action_cancer"
-                    android:enabled="true"
-                    android:icon="@drawable/s4_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/cancer" />
-                <item
-                    android:id="@+id/action_leo"
-                    android:enabled="true"
-                    android:icon="@drawable/s5_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/leo" />
-                <item
-                    android:id="@+id/action_virgo"
-                    android:enabled="true"
-                    android:icon="@drawable/s6_wh"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/virgo" />
-                <item
-                    android:id="@+id/action_libra"
-                    android:enabled="true"
-                    android:icon="@drawable/s7_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/libra" />
-                <item
-                    android:id="@+id/action_scorpio"
-                    android:enabled="true"
-                    android:icon="@drawable/s8_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/scorpio" />
-                <item
-                    android:id="@+id/action_sagittarius"
-                    android:enabled="true"
-                    android:icon="@drawable/s9_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/sagittarius" />
-                <item
-                    android:id="@+id/action_capricorn"
-                    android:enabled="true"
-                    android:icon="@drawable/s10_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/capricorn" />
-                <item
-                    android:id="@+id/action_aquarius"
-                    android:enabled="true"
-                    android:icon="@drawable/s11_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/aquarius" />
-                <item
-                    android:id="@+id/action_pisces"
-                    android:enabled="true"
-                    android:icon="@drawable/s12_or"
-                    android:textSize="@dimen/_2sdp"
-                    android:title="@string/pisces" />
-            </menu>
-        </item>
     </group>
 </menu>

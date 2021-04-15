@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/bg"
         android:layout_height="match_parent">
 
         <ImageView
@@ -13,7 +14,8 @@
             android:layout_gravity="center"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
-            android:src="@drawable/background_v2"
+            android:src="@drawable/bg_galaxy"
+            android:alpha="0.15"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,23 +54,25 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center"
-                android:text="@string/menu_item_22_txt"
+                android:text="MY LOVE"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/size_text_top" />
         </RelativeLayout>
+
 
         <TextView
             android:id="@+id/compat_choice_title1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Are You\nMade for each other"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_16sdp"
+            android:text="Are You Made for each other"
+            android:textColor="#FF754C"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/compat_choice_top_bar" />
-
 
         <LinearLayout
             android:id="@+id/compat_choice_signs"
@@ -81,10 +85,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/compat_choice_title1">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -107,6 +107,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -116,12 +117,24 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:text="@string/compatam_p1_sign1"
+                        android:text="HIM"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="18.0sp" />
                 </RelativeLayout>
-            </RelativeLayout>
+
+
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_center_icon"
+                android:layout_gravity="center_horizontal"
+                tools:layout_editor_absoluteX="55dp"
+                tools:layout_editor_absoluteY="44dp" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -140,7 +153,7 @@
                         android:layout_below="@+id/compat_choice_right_title"
                         android:layout_margin="10.0dip">
 
-                        <androidx.recyclerview.widget.RecyclerView
+                        z<androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/compat_choice_right_viewpager"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_120sdp"
@@ -159,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:text="@string/compatam_p1_sign2"
+                        android:text="HER"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
                         android:textSize="18.0sp" />
@@ -173,7 +186,7 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_below="@+id/compat_choice_signs"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/rounded_button_blue"
+            android:background="@drawable/bg_button_0k"
             app:layout_constraintBottom_toTopOf="@+id/compat_choice_go_wims"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -184,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/compatam_p1_cta"
+                android:text="See Now"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="21.0sp" />

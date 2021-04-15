@@ -3,41 +3,16 @@
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="5dip" />
-            <gradient
-                android:startColor="#ff9d9e9d"
-                android:centerColor="#ff5a5d5a"
-                android:centerY="0.5"
-                android:endColor="#ff747674"
-                android:angle="270"
-                />
+            <solid android:color="#898743FF" />
         </shape>
     </item>
 
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <shape>
-                <corners android:radius="5dip" />
-                <gradient
-                    android:startColor="#80ffd300"
-                    android:centerColor="#80ffb600"
-                    android:centerY="0.75"
-                    android:endColor="#a0ffcb00"
-                    android:angle="270"
-                    />
-            </shape>
-        </clip>
-    </item>
 
     <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <corners
-                    android:radius="5dip" />
-                <gradient
-                    android:startColor="@color/bg_button"
-                    android:endColor="@color/pink_love"
-                    android:angle="270"
-                    />
+                <corners android:radius="5dip" />
+               <solid android:color="#9942FE" />
             </shape>
         </clip>
     </item>

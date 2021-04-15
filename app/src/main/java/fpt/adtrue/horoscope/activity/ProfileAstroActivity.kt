@@ -18,6 +18,7 @@ import fpt.adtrue.horoscope.application.App.Companion.getSign
 import fpt.adtrue.horoscope.application.App.Companion.getZodiac
 import fpt.adtrue.horoscope.databinding.ActivityAstroProfileBinding
 
+@Suppress("NAME_SHADOWING")
 class ProfileAstroActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAstroProfileBinding
@@ -75,7 +76,7 @@ class ProfileAstroActivity : BaseActivity() {
             }
         }
 
-        binding.astroProfileRedirChatButton.setOnClickListener {
+        binding.cvBot1.setOnClickListener {
             val intent = Intent(
                 Intent.ACTION_SENDTO, Uri.fromParts(
                     "mailto", "walkinsvicky@gmail.com", null
@@ -84,8 +85,8 @@ class ProfileAstroActivity : BaseActivity() {
             intent.putExtra(Intent.EXTRA_SUBJECT, "subject")
             intent.putExtra(Intent.EXTRA_TEXT, "Horoscope")
             startActivity(Intent.createChooser(intent, "Choose apps to connect with us :"))
-            binding.astroProfileRedirChatButton.isEnabled = false
-            val enableButton = Runnable { binding.astroProfileRedirChatButton.isEnabled = true }
+            binding.cvBot1.isEnabled = false
+            val enableButton = Runnable { binding.cvBot1.isEnabled = true }
             Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 

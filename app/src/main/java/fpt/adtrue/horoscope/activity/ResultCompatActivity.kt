@@ -52,11 +52,8 @@ class ResultCompatActivity : BaseActivity() {
                 binding.rlBackground.visibility = View.GONE
             }
         }.start()
-        binding.compatResultsSignLeftImg.setImageResource(getZodiac()[SIGN].image)
-        binding.compatResultsSignLeftText.text = getZodiac()[SIGN].name
-        binding.compatResultsSignRightImg.setImageResource(getZodiac()[HER].image)
-        binding.compatResultsSignRightText.text = getZodiac()[HER].name
-
+        binding.compatResultsSignLeftImg.setImageResource(getZodiac()[SIGN].image2)
+        binding.compatResultsSignRightImg.setImageResource(getZodiac()[HER].image2)
         binding.ringProgress.max = 100
 
 
@@ -115,19 +112,6 @@ class ResultCompatActivity : BaseActivity() {
             startActivity(intent)
         }
 
-        binding.compatResultsRedirChatButton.setOnClickListener {
-            val intent = Intent(
-                Intent.ACTION_SENDTO, fromParts(
-                    "mailto", "walkinsvicky@gmail.com", null
-                )
-            )
-            intent.putExtra(Intent.EXTRA_SUBJECT, "subject")
-            intent.putExtra(Intent.EXTRA_TEXT, "Horoscope")
-            startActivity(Intent.createChooser(intent, "Choose apps to connect with us :"))
-            binding.compatResultsRedirChatButton.isEnabled = false
-            val enableButton = Runnable { binding.compatResultsRedirChatButton.isEnabled = true }
-            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
-        }
 
 
     }

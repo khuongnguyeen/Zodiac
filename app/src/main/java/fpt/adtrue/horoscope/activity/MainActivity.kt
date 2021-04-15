@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.Intent.*
 import android.content.SharedPreferences
 import android.net.Uri
+import android.net.Uri.fromParts
 import android.net.Uri.parse
 import android.os.Build
 import android.os.Bundle
@@ -25,8 +26,10 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import android.widget.Toast.makeText
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayout
 import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
@@ -55,6 +58,14 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
         binding.logoSign.setImageResource(getZodiac()[SIGN].image)
         binding.slidingTabs.setOnTabSelectedListener(this)
 
+        binding.tvNameSign.text = getZodiac()[SIGN].name
+
+// ________________________________________________________________________________________
+        getViewModel().data.observe(this, Observer {
+            binding.tvDate.text = "${getZodiac()[SIGN].name} - ${it.currentDate}"
+        })
+// ________________________________________________________________________________________
+
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         sttBar(this)
@@ -70,6 +81,7 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
             binding.about.fadeVisibility(GONE, 1000)
         }
         binding.about.setOnClickListener {}
+        binding.toolbar.overflowIcon = ContextCompat.getDrawable(this, R.drawable.ic_three_dot)
         binding.toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu2 -> {
@@ -107,12 +119,12 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
                 R.id.contact_us -> {
                     val intent = Intent(
-                        Intent.ACTION_SENDTO,
-                        Uri.fromParts("mailto", "walkinsvicky@gmail.com", null)
+                        ACTION_SENDTO,
+                        fromParts("mailto", "walkinsvicky@gmail.com", null)
                     )
-                    intent.putExtra(Intent.EXTRA_SUBJECT, "subject")
-                    intent.putExtra(Intent.EXTRA_TEXT, "Horoscope")
-                    startActivity(Intent.createChooser(intent, "Choose apps to connect with us :"))
+                    intent.putExtra(EXTRA_SUBJECT, "subject")
+                    intent.putExtra(EXTRA_TEXT, "Horoscope")
+                    startActivity(createChooser(intent, "Choose apps to connect with us :"))
                     true
                 }
 
@@ -123,105 +135,10 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
                 R.id.about_us -> {
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
-                    binding.about.fadeVisibility(View.VISIBLE)
+                    binding.about.fadeVisibility(VISIBLE)
                     true
                 }
 
-                R.id.action_aries -> {
-                    App.SIGN = 0
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_taurus -> {
-                    App.SIGN = 1
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_gemini -> {
-                    App.SIGN = 2
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_cancer -> {
-                    App.SIGN = 3
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_leo -> {
-                    App.SIGN = 4
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_virgo -> {
-                    App.SIGN = 5
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_libra -> {
-                    App.SIGN = 6
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_scorpio -> {
-                    App.SIGN = 7
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_sagittarius -> {
-                    App.SIGN = 8
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_capricorn -> {
-                    App.SIGN = 9
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_aquarius -> {
-                    App.SIGN = 10
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
-
-                R.id.action_pisces -> {
-                    App.SIGN = 11
-                    val intent = Intent(this, ProfileAstroActivity::class.java)
-                    intent.putExtra("horoscope", "Zodiac")
-                    startActivity(intent)
-                    true
-                }
                 else -> false
             }
         }

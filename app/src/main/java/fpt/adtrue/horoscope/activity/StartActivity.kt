@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.view.View.GONE
@@ -76,7 +77,7 @@ class StartActivity : BaseActivity() {
                 startActivities(arrayOf(intent))
             }
         }
-        Handler().postDelayed(enableButton, 2000)
+        Handler(Looper.myLooper()!!).postDelayed(enableButton, 2000)
         val calendar = getInstance(TimeZone.getDefault()) as Calendar
         var mon = "${calendar.get(MONTH) + 1}"
         var day = "${calendar.get(DAY_OF_MONTH)}"
@@ -210,18 +211,18 @@ class StartActivity : BaseActivity() {
     }
 
     private fun getDaSi() {
-        val v1 = DataZodiac("Aries", R.drawable.s1_wh, R.drawable.s1_hp, R.drawable.s1_or)
-        val v2 = DataZodiac("Taurus", R.drawable.s2_wh, R.drawable.s2_hp, R.drawable.s2_or)
-        val v3 = DataZodiac("Gemini", R.drawable.s3_wh, R.drawable.s3_hp, R.drawable.s3_or)
-        val v4 = DataZodiac("Cancer", R.drawable.s4_wh, R.drawable.s4_hp, R.drawable.s4_or)
-        val v5 = DataZodiac("Leo", R.drawable.s5_wh, R.drawable.s5_hp, R.drawable.s5_or)
-        val v6 = DataZodiac("Virgo", R.drawable.s6_wh, R.drawable.s6_hp, R.drawable.s6_or)
-        val v7 = DataZodiac("Libra", R.drawable.s7_wh, R.drawable.s7_hp, R.drawable.s7_or)
-        val v8 = DataZodiac("Scorpio", R.drawable.s8_wh, R.drawable.s8_hp, R.drawable.s8_or)
-        val v9 = DataZodiac("Sagittarius", R.drawable.s9_wh, R.drawable.s9_hp, R.drawable.s9_or)
-        val v10 = DataZodiac("Capricorn", R.drawable.s10_wh, R.drawable.s10_hp, R.drawable.s10_or)
-        val v11 = DataZodiac("Aquarius", R.drawable.s11_wh, R.drawable.s11_hp, R.drawable.s11_or)
-        val v12 = DataZodiac("Pisces", R.drawable.s12_wh, R.drawable.s12_hp, R.drawable.s12_or)
+        val v1 = DataZodiac("Aries", R.drawable.s1_wh, R.drawable.ic_aries, R.drawable.s1_or)
+        val v2 = DataZodiac("Taurus", R.drawable.s2_wh, R.drawable.ic_taurus, R.drawable.s2_or)
+        val v3 = DataZodiac("Gemini", R.drawable.s3_wh, R.drawable.ic_gemini, R.drawable.s3_or)
+        val v4 = DataZodiac("Cancer", R.drawable.s4_wh, R.drawable.ic_cancer, R.drawable.s4_or)
+        val v5 = DataZodiac("Leo", R.drawable.s5_wh, R.drawable.ic_leo, R.drawable.s5_or)
+        val v6 = DataZodiac("Virgo", R.drawable.s6_wh, R.drawable.ic_virgo, R.drawable.s6_or)
+        val v7 = DataZodiac("Libra", R.drawable.s7_wh, R.drawable.ic_libra, R.drawable.s7_or)
+        val v8 = DataZodiac("Scorpio", R.drawable.s8_wh, R.drawable.ic_scorpio, R.drawable.s8_or)
+        val v9 = DataZodiac("Sagittarius", R.drawable.s9_wh, R.drawable.sagitarius, R.drawable.s9_or)
+        val v10 = DataZodiac("Capricorn", R.drawable.s10_wh, R.drawable.ic_capricorm, R.drawable.s10_or)
+        val v11 = DataZodiac("Aquarius", R.drawable.s11_wh, R.drawable.ic_aquarius, R.drawable.s11_or)
+        val v12 = DataZodiac("Pisces", R.drawable.s12_wh, R.drawable.ic_pisces, R.drawable.s12_or)
         getZodiac().add(v1)
         getZodiac().add(v2)
         getZodiac().add(v3)
