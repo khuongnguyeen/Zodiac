@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.databinding.ItemTarotCardBinding
 
-class TarotResultAdapter :
+class TarotResultAdapter    (val inter: ITarot) :
     RecyclerView.Adapter<TarotResultAdapter.TarotHolder>() {
 
 
@@ -17,7 +17,7 @@ class TarotResultAdapter :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),inter
         )
 
     @SuppressLint("SetTextI18n")
@@ -49,8 +49,19 @@ class TarotResultAdapter :
         }
     }
 
+    interface ITarot {
+        fun onClickItem(position: Int)
+    }
+
     override fun getItemCount() = 3
 
 
-    class TarotHolder(val binding: ItemTarotCardBinding) : RecyclerView.ViewHolder(binding.root)
+    class TarotHolder(val binding: ItemTarotCardBinding, inter: ITarot) :
+        RecyclerView.ViewHolder(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                inter.onClickItem(adapterPosition)
+            }
+        }
+    }
 }

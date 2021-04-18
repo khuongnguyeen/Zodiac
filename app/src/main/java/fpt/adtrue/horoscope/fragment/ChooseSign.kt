@@ -16,6 +16,8 @@ import fpt.adtrue.horoscope.adapter.SignPagerAdapter
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.api.Utils.setDataLocal
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.SIGN
+import fpt.adtrue.horoscope.application.App.Companion.getViewModel
 import fpt.adtrue.horoscope.databinding.ActivitySelectSignBinding
 
 class ChooseSign : Fragment() {
@@ -36,20 +38,20 @@ class ChooseSign : Fragment() {
         binding.gridSign.adapter = SignAdapter(context = context!!)
         binding.gridSign.setOnItemClickListener { _, _, _, id ->
             binding.loading.visibility = View.VISIBLE
-            App.SIGN = id.toInt()
-            setDataLocal(App.SIGN, context!!)
-            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "yesterday")
+            SIGN = id.toInt()
+            setDataLocal(SIGN, context!!)
+            getViewModel().getHoroscope(App.getZodiac()[SIGN].name, "yesterday")
 
-            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "today")
+            getViewModel().getHoroscope(App.getZodiac()[SIGN].name, "today")
 
-            App.getViewModel().getHoroscope(App.getZodiac()[App.SIGN].name, "tomorrow")
+            getViewModel().getHoroscope(App.getZodiac()[SIGN].name, "tomorrow")
 
             val intent = Intent(context, MainActivity::class.java)
             context!!.startActivities(arrayOf(intent))
         }
 //        choice_sign_go_wims
         binding.choiceSignGoWims.setOnClickListener {
-            Utils.setDataLocal(App.SIGN, context!!)
+            setDataLocal(App.SIGN, context!!)
             val intent = Intent(context, WhatIsMySignActivity::class.java)
             context!!.startActivities(arrayOf(intent))
         }

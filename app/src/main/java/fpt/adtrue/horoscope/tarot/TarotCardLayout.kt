@@ -115,7 +115,9 @@ class TarotCardLayout : FrameLayout {
             cardView.setOnClickListener {
                 Log.e("CycleLayout","___________________$i")
                 cardView.bringToFront()
+                cardView.invalidate()
                 chooseView.bringToFront()
+                chooseView.invalidate()
                 if (k == 0) {
                     App.POSITION_LOVE = data[i].name
                     expendCardAnim(chooseView, outView, cardView, tarotDecodeLayout, topLeftPoint)
@@ -179,7 +181,9 @@ class TarotCardLayout : FrameLayout {
             cardView.setOnClickListener {
                 Log.e("CycleLayout","___________________$i")
                 cardView.bringToFront()
+                cardView.invalidate()
                 chooseView.bringToFront()
+                chooseView.invalidate()
                 if (k == 0) {
                     App.POSITION_LOVE = data[i].name
                     expendCardAnim(chooseView, outView, cardView, tarotDecodeLayout, topLeftPoint)
@@ -243,7 +247,9 @@ class TarotCardLayout : FrameLayout {
             cardView?.setOnClickListener {
                 Log.e("CycleLayout","___________________$i")
                 cardView.bringToFront()
+                cardView.invalidate()
                 chooseView.bringToFront()
+                chooseView.invalidate()
 
                 if (k == 0) {
                     App.POSITION_LOVE = data[i].name
@@ -410,8 +416,11 @@ class TarotCardLayout : FrameLayout {
             override fun onAnimationStart(animator: Animator) {}
             override fun onAnimationEnd(animator: Animator) {
                 chooseView.bringToFront()
+                chooseView.invalidate()
                 innerCardView.bringToFront()
+                innerCardView.invalidate()
                 outCardView.bringToFront()
+                outCardView.invalidate()
                 cardDanceAnim(innerCardView, chooseView, tarotDecodeLayout, topRightPoint)
             }
 
@@ -440,7 +449,9 @@ class TarotCardLayout : FrameLayout {
             override fun onAnimationEnd(animator: Animator) {
                 tarotDecodeLayout.visibility = View.VISIBLE
                 chooseView.bringToFront()
+                chooseView.invalidate()
                 innerCardView.bringToFront()
+                innerCardView.invalidate()
                 val toX =
                     (topRightPoint.x - chooseView.width * 1.0 / 2).toFloat()
                 val toY =

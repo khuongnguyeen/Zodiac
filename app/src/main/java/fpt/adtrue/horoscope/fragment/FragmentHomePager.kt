@@ -20,6 +20,10 @@ import fpt.adtrue.horoscope.adapter.NewApiAdapter
 import fpt.adtrue.horoscope.api.HoroscopeApi
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.getTarot2
+import fpt.adtrue.horoscope.application.App.Companion.getTarot3
+import fpt.adtrue.horoscope.application.App.Companion.getTarot4
+import fpt.adtrue.horoscope.application.App.Companion.getViewModel
 import fpt.adtrue.horoscope.databinding.PagerItemRecyclerviewBinding
 import fpt.adtrue.horoscope.model.DataHoroscope
 
@@ -32,10 +36,8 @@ class FragmentHomePager(private val position: Int) : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = PagerItemRecyclerviewBinding.inflate(inflater, container, false)
-
-
         if (position == 0) {
-            App.getTarot2().observe(this, Observer{ ok ->
+            getTarot2().observe(this, Observer{ ok ->
                 ok.daily_horoscope.forEach {
                     if (it.name.equals(App.getZodiac()[App.SIGN].name, true)) {
                         binding.tvDescription.text = it.sign.general
@@ -44,13 +46,13 @@ class FragmentHomePager(private val position: Int) : Fragment() {
                     }
                 }
             })
-            App.getViewModel().data2.observe(this, Observer {
+            getViewModel().data2.observe(this, Observer {
                 updateData(it)
             })
         }
 
         if (position == 1) {
-            App.getTarot3().observe(this, Observer { ok ->
+            getTarot3().observe(this, Observer { ok ->
                 ok.daily_horoscope.forEach {
                     if (it.name.equals(App.getZodiac()[App.SIGN].name, true)) {
                         binding.tvDescription.text = it.sign.general
@@ -59,13 +61,13 @@ class FragmentHomePager(private val position: Int) : Fragment() {
                     }
                 }
             })
-            App.getViewModel().data.observe(this,Observer {
+            getViewModel().data.observe(this,Observer {
                 updateData(it)
             })
         }
 
         if (position == 2) {
-            App.getTarot4().observe(this,Observer { ok ->
+            getTarot4().observe(this,Observer { ok ->
                 ok.daily_horoscope.forEach {
                     if (it.name.equals(App.getZodiac()[App.SIGN].name, true)) {
                         binding.tvDescription.text = it.sign.general
@@ -74,21 +76,24 @@ class FragmentHomePager(private val position: Int) : Fragment() {
                     }
                 }
             })
-            App.getViewModel().data1.observe(this,Observer {
+            getViewModel().data1.observe(this,Observer {
                 updateData(it)
             })
         }
 
-        binding.homepageRedirHoroperso.setOnClickListener {
+        binding.cvBot2.setOnClickListener {
             val intent = Intent(context, ProfileAstroActivity::class.java)
             context!!.startActivities(arrayOf(intent))
-            binding.homepageRedirCompat.isEnabled = false
-            val enableButton = Runnable { binding.homepageRedirCompat.isEnabled = true }
+            binding.cvBot2.isEnabled = false
+            val enableButton = Runnable { binding.cvBot2.isEnabled = true }
             Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
-        binding.homepageTarot.setOnClickListener {
+        binding.cvBot3.setOnClickListener {
             StartReadingTarotActivity.start(context!!)
+            binding.cvBot3.isEnabled = false
+            val enableButton = Runnable { binding.cvBot3.isEnabled = true }
+            Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
         binding.homepageRedirChatButton.setOnClickListener {
@@ -105,11 +110,11 @@ class FragmentHomePager(private val position: Int) : Fragment() {
             Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 
-        binding.homepageRedirCompat.setOnClickListener {
+        binding.dsagafh.setOnClickListener {
             val intent = Intent(context, ChoiceCompatActivity::class.java)
             context!!.startActivities(arrayOf(intent))
-            binding.homepageRedirCompat.isEnabled = false
-            val enableButton = Runnable { binding.homepageRedirCompat.isEnabled = true }
+            binding.dsagafh.isEnabled = false
+            val enableButton = Runnable { binding.dsagafh.isEnabled = true }
             Handler(Looper.myLooper()!!).postDelayed(enableButton, 1000)
         }
 

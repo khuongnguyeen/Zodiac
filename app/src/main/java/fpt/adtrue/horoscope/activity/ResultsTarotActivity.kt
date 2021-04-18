@@ -28,7 +28,7 @@ import fpt.adtrue.horoscope.broadcast.NotificationActionService
 import fpt.adtrue.horoscope.databinding.ActivityTarotResultsBinding
 
 @Suppress("DEPRECATION")
-class ResultsTarotActivity : Activity(), View.OnTouchListener {
+class ResultsTarotActivity : Activity(), View.OnTouchListener , TarotResultAdapter.ITarot{
 
     private lateinit var binding: ActivityTarotResultsBinding
     private var loveUpright = ""
@@ -44,17 +44,12 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tarot_results)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
-
         layoutManager = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true)
         layoutManager!!.setPostLayoutListener(CarouselZoomPostLayoutListener())
-
         binding.rc.layoutManager = layoutManager
         binding.rc.setHasFixedSize(true)
-        binding.rc.adapter = TarotResultAdapter()
+        binding.rc.adapter = TarotResultAdapter(this)
         binding.rc.addOnScrollListener(CenterScrollListener())
-
-
         getTarot().forEach {
             if (it.name == POSITION_LOVE) {
                 loveUpright = it.keywords.love.upright
@@ -76,6 +71,24 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener {
 
         binding.compatChoiceBack.setOnClickListener {
             onBackPressed()
+        }
+    }
+
+    override fun onClickItem(position: Int) {
+        if (position == 0){
+            layoutManager?.scrollToPosition(0)
+            binding.tvLoveDetail.text = loveUpright
+            binding.tvReversed.text = loveReversed
+        }
+        if (position == 1){
+            layoutManager?.scrollToPosition(1)
+            binding.tvLoveDetail.text = careerUpright
+            binding.tvReversed.text = careerReversed
+        }
+        if (position == 2){
+            layoutManager?.scrollToPosition(2)
+            binding.tvLoveDetail.text = futureUpright
+            binding.tvReversed.text = futureReversed
         }
     }
 

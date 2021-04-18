@@ -11,6 +11,7 @@ import fpt.adtrue.horoscope.application.App
 import fpt.adtrue.horoscope.application.App.Companion.HER
 import fpt.adtrue.horoscope.application.App.Companion.SIGN
 import fpt.adtrue.horoscope.databinding.ActivityWhatIsMySignBinding
+import java.util.*
 
 class ChoiceSignHerActivity: BaseActivity(){
 
@@ -20,17 +21,15 @@ class ChoiceSignHerActivity: BaseActivity(){
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_what_is_my_sign)
 
+        binding.dp.setMaxDate(Date().time)
+
         sttBar(this)
         binding.wimsValidate.setOnClickListener {
-
-            val day2 = binding.dpMe.day
-            val mon2 = binding.dpMe.month
-            SIGN = checkDate(mon2, day2)
 
             val day = binding.dp.day
             val mon = binding.dp.month
             HER = checkDate(mon, day)
-            val intent = Intent(applicationContext, ResultCompatActivity::class.java)
+            val intent = Intent(applicationContext, ChoiceCompatActivity::class.java)
             startActivities(arrayOf(intent))
         }
         binding.wimsBack.setOnClickListener {

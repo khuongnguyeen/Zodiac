@@ -9,6 +9,8 @@
 
         <ImageView
             android:id="@+id/iv_career"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_135sdp"
             android:src="@drawable/ten_of_pentacles" />
@@ -18,9 +20,9 @@
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity="center"
             android:text="CAREER"
             android:textColor="@color/white"
-            android:fontFamily="@font/segoe_bold"
             android:textStyle="bold"
             android:visibility="visible"/>
 

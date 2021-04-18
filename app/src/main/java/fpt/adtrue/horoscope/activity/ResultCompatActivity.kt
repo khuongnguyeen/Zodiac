@@ -27,7 +27,6 @@ import java.util.*
 class ResultCompatActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCompatResultsBinding
-    private var mCountDownTimer: CountDownTimer? = null
     private var runnable: Runnable? = null
 
     @SuppressLint("SetTextI18n", "NewApi")
@@ -46,12 +45,7 @@ class ResultCompatActivity : BaseActivity() {
         }
         runnable!!.run()
 
-        mCountDownTimer = object : CountDownTimer(7000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {}
-            override fun onFinish() {
-                binding.rlBackground.visibility = View.GONE
-            }
-        }.start()
+
         binding.compatResultsSignLeftImg.setImageResource(getZodiac()[SIGN].image2)
         binding.compatResultsSignRightImg.setImageResource(getZodiac()[HER].image2)
         binding.ringProgress.max = 100

@@ -20,6 +20,7 @@ class HoroscopeViewModel {
     val data1 = MutableLiveData<DataHoroscope>()
     val data2 = MutableLiveData<DataHoroscope>()
     val isLoading= ObservableBoolean(false)
+    val isCheck= ObservableBoolean(false)
     @SuppressLint("CheckResult")
     fun getHoroscope(sign:String,day:String) {
         isLoading.set(true)
@@ -39,10 +40,12 @@ class HoroscopeViewModel {
                         data2.value = it
                     }
                     isLoading.set(false)
+                    isCheck.set(false)
                 },
                 {
                     Log.e("HoroscopeViewModel",Gson().toJson(it))
                     isLoading.set(false)
+                    isCheck.set(true)
                 })
     }
 

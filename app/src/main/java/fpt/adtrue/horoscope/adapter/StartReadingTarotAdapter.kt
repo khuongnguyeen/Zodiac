@@ -19,18 +19,18 @@ class StartReadingTarotAdapter(private val inter: ITarot) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TarotHolder, position: Int) {
         if (position == 0) {
-            holder.binding.ivTop.setImageResource(R.drawable.three_tarot)
-            holder.binding.textBottom.text = "CARDS"
+            holder.binding.ivTop.setImageResource(R.drawable.ic_tarot)
+            holder.binding.textBottom.text = "Cards"
             holder.binding.tvCenter.text = "Pull your Cards"
         }
         if (position == 1) {
-            holder.binding.ivTop.setImageResource(R.drawable.question_mark)
-            holder.binding.textBottom.text = "YES OR NO"
-            holder.binding.tvCenter.text = "Get your Answer"
+            holder.binding.ivTop.setImageResource(R.drawable.ic_yes_no)
+            holder.binding.textBottom.text = "Coming Soon"
+            holder.binding.tvCenter.text = "Get your answer"
         }
         if (position == 2) {
-            holder.binding.ivTop.setImageResource(R.drawable.all_cards)
-            holder.binding.textBottom.text = "ALL CARDS"
+            holder.binding.ivTop.setImageResource(R.drawable.all_card)
+            holder.binding.textBottom.text = "Coming Soon"
             holder.binding.tvCenter.text = "Explore Cards"
         }
         holder.binding.root.setOnClickListener {

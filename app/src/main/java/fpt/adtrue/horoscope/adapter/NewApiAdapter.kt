@@ -32,6 +32,9 @@ class NewApiAdapter (val love:String,val work:String,val money:String) :
 
         }
 
+
+
+
     }
 
     override fun getItemCount() = 3

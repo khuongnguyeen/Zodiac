@@ -9,6 +9,7 @@ import fpt.adtrue.horoscope.adapter.SignAdapter
 import fpt.adtrue.horoscope.api.Utils.setDataLocal
 import fpt.adtrue.horoscope.api.Utils.sttBar
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.HIM
 import fpt.adtrue.horoscope.application.App.Companion.SIGN
 import fpt.adtrue.horoscope.databinding.ActivitySelectSignBinding
 
@@ -29,6 +30,7 @@ class ChoiceSignProfileAstroActivity: BaseActivity(){
         sttBar(this)
         binding.choiceSignGoWims.setOnClickListener {
             setDataLocal(SIGN, applicationContext)
+            HIM = true
             val intent = Intent(applicationContext, ChoiceDateActivity::class.java)
             startActivities(arrayOf(intent))
         }

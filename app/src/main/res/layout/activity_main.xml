@@ -56,19 +56,20 @@
                     </androidx.appcompat.widget.Toolbar>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        android:background="@drawable/bg_sign_home"
+                        android:background="@drawable/circle_sign_selector"
                         >
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_8sdp"
-                            app:cardCornerRadius="24dp"
+                            android:layout_marginStart="8dp"
+                            app:cardCornerRadius="18dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -124,7 +125,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
-                                android:src="@drawable/baseline_arrow_drop_down_white_24dp"
+                                android:src="@drawable/ic_down"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -146,9 +147,10 @@
                         app:tabIndicatorHeight="@dimen/_25sdp"
                         app:tabSelectedTextColor="@color/white"
                         app:tabIndicator="@drawable/bg_button"
+                        app:tabIndicatorColor="#8743FF"
                         app:tabInlineLabel="true"
                         app:tabTextColor="#bdbdbd"
-
+                        app:tabBackground="@drawable/bg_tab_layout"
                         />
                 </com.google.android.material.appbar.AppBarLayout>
 
@@ -160,39 +162,39 @@
                     android:visibility="visible"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:id="@+id/relativeLayout2"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:visibility="@{data.isLoading ? View.VISIBLE : View.GONE}"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent">-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="@{data.isLoading ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-<!--                    <View-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/_150sdp"-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
 
-<!--                        android:layout_marginStart="20dp"-->
+                        android:layout_marginStart="20dp"
 
-<!--                        android:layout_marginEnd="20dp"-->
-<!--                        android:background="@drawable/bg_loading"-->
-<!--                        app:layout_constraintBottom_toBottomOf="@+id/progressBar3"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/progressBar3" />-->
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/bg_loading"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/progressBar3" />
 
-<!--                    <ProgressBar-->
-<!--                        android:id="@+id/progressBar3"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:backgroundTint="@color/red"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent"-->
-<!--                        tools:ignore="UnusedAttribute" />-->
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                    <ProgressBar
+                        android:id="@+id/progressBar3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:backgroundTint="@color/red"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="UnusedAttribute" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -235,7 +237,7 @@
                     android:layout_centerVertical="true"
                     android:layout_margin="@dimen/_10sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/back_white"
+                    android:src="@drawable/ic_back"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -291,6 +293,57 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data.isCheck() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+
+                android:layout_height="@dimen/_150sdp"
+
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/bg_loading"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/progressBar" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No Internet Connection"
+                android:gravity="center"
+                android:textSize="@dimen/size_text_title"
+                android:textColor="@color/white"
+
+
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

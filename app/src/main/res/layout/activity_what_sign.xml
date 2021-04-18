@@ -7,9 +7,16 @@
         android:id="@id/mainLayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/background_v2"
+        android:background="@color/bg"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true">
+
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/bg_galaxy"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:alpha="0.15"/>-->
 
         <ImageView
             android:id="@id/wims_back_2"
@@ -17,7 +24,7 @@
             android:layout_height="@dimen/size_back"
             android:layout_marginTop="@dimen/_24sdp"
             android:layout_marginStart="@dimen/_10sdp"
-            android:src="@drawable/back_white"
+            android:src="@drawable/ic_back"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -64,17 +71,35 @@
             app:layout_constraintTop_toBottomOf="@+id/wims_title_layout"
             app:layout_constraintVertical_bias="0.493">
 
+            <TextView
+                android:id="@+id/tv_your"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Your Birthday"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />1
+
             <com.ycuwq.datepicker.date.DatePicker
                 android:id="@+id/dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/bg"
                 app:itemTextColor="@color/white"
-                app:itemTextSize="@dimen/_16ssp"
-
-                app:wheelCurtainBorderColor="@color/transparent"
-                android:background="@drawable/background_v2"
-                app:selectedTextSize="@dimen/_30sdp"
+                app:itemTextSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_her"
+                app:selectedTextSize="@dimen/_20sdp"
                 app:wheelCurtain="false"
+                app:wheelCurtainBorderColor="@color/transparent"
+                app:wheelCurtainColor="@color/red"
                 app:zoomInSelectedItem="true" />
         </LinearLayout>
 

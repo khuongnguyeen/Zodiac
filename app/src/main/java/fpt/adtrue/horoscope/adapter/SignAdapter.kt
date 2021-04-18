@@ -27,7 +27,7 @@ class SignAdapter (context:Context) : BaseAdapter(){
         var img = view?.findViewById<ImageView>(R.id.grid_image)
         var tv = view?.findViewById<TextView>(R.id.grid_text)
 
-        img?.setImageResource(App.getZodiac()[position].image)
+        img?.setImageResource(App.getZodiac()[position].image3)
         tv?.text = App.getZodiac()[position].name
 
 

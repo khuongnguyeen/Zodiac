@@ -31,7 +31,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/menu_close"
+                android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -129,13 +129,15 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        app:cardBackgroundColor="@color/black_trong"
                         app:cardCornerRadius="@dimen/_5sdp"
                         app:cardElevation="@dimen/_5sdp"
                         app:layout_constraintBottom_toBottomOf="@+id/compat_baro"
                         app:layout_constraintEnd_toStartOf="@+id/compat_baro"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        >
+                        app:layout_constraintTop_toTopOf="parent">
+
                         <ImageView
                             android:id="@+id/compat_results_sign_left_img"
                             android:layout_width="69dp"
@@ -145,18 +147,18 @@
                     </androidx.cardview.widget.CardView>
 
 
-
-
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        app:cardBackgroundColor="@color/black_trong"
                         app:cardCornerRadius="@dimen/_5sdp"
                         app:cardElevation="@dimen/_5sdp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/compat_baro"
-                        app:layout_constraintTop_toTopOf="@+id/compat_baro"
-                        >
+                        app:layout_constraintTop_toTopOf="@+id/compat_baro">
+
                         <ImageView
                             android:id="@+id/compat_results_sign_right_img"
                             android:layout_width="69dp"
@@ -438,6 +440,7 @@
             android:gravity="center"
             android:text="Values"
             android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
             android:textColor="#9942FE"
             android:textSize="@dimen/size_text_title"
             app:layout_constraintStart_toStartOf="parent"
@@ -484,6 +487,7 @@
                          android:layout_height="wrap_content"
                          android:gravity="center"
                          android:text="Love"
+                         android:textStyle="bold"
                          android:layout_margin="@dimen/_10sdp"
                          android:textColor="#9942FE"
                          android:textSize="@dimen/size_text_title"
@@ -534,39 +538,6 @@
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <!--    <com.google.android.gms.ads.AdView-->
-        <!--        xmlns:ads="http://schemas.android.com/apk/res-auto"-->
-        <!--        android:id="@id/adView"-->
-        <!--        android:layout_width="fill_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_gravity="bottom|center"-->
-        <!--        android:gravity="center"-->
-        <!--        android:visibility="gone"-->
-        <!--        ads:adSize="BANNER"-->
-        <!--        ads:adUnitId="@string/adUnitIdBanner" />-->
-
-
-        <RelativeLayout
-            android:id="@+id/rl_background"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:background="@drawable/paywall_bg">
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/loading_love"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_rawRes="@raw/compatibility_loader" />
-        </RelativeLayout>
 
     </FrameLayout>
 </layout>

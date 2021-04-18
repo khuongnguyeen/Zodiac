@@ -22,5 +22,7 @@ class SignPagerAdapter :
     override fun getItemCount() = 12
 
 
-    class TarotHolder(val binding: ItemSignBinding) : RecyclerView.ViewHolder(binding.root)
+    class TarotHolder(val binding: ItemSignBinding) : RecyclerView.ViewHolder(binding.root){
+
+    }
 }

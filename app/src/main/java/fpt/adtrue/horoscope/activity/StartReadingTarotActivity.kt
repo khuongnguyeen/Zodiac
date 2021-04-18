@@ -32,7 +32,6 @@ class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITaro
         })
 
 
-        binding.rlLo.setOnClickListener {  }
 
         binding.compatChoiceBack.setOnClickListener {
             onBackPressed()
@@ -52,14 +51,6 @@ class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITaro
     override fun onClickItem(position: Int) {
         if (position == 0) {
             TarotCircleCardActivity.start(this)
-        } else {
-            binding.rlLo.visibility = VISIBLE
-            binding.logo.playAnimation()
-            val enableButton = Runnable {
-                binding.rlLo.visibility = GONE
-            }
-            Handler(Looper.getMainLooper()).postDelayed(enableButton, 2000)
-
         }
     }
 }

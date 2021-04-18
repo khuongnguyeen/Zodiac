@@ -22,7 +22,6 @@ import fpt.adtrue.horoscope.databinding.ActivityAstroProfileBinding
 class ProfileAstroActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAstroProfileBinding
-    var runnable: Runnable? = null
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,15 +30,6 @@ class ProfileAstroActivity : BaseActivity() {
         val s = intent.getStringExtra("horoscope")
         if (s != null) binding.textView6.text = s
         binding.tvSignNameAstro.text = getZodiac()[SIGN].name
-        runnable = Runnable {
-            binding.hpBarometre.animate()
-                .setDuration(30000)
-                .rotationBy(360F)
-                .setInterpolator(LinearInterpolator())
-                .withEndAction(runnable)
-                .start()
-        }
-        runnable!!.run()
 
         Utils.sttBar(this)
         binding.hpSign.setOnClickListener {

@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="137.445dp"
-            android:layout_height="210.464dp"
+            android:layout_width="@dimen/_79sdp"
+            android:layout_height="@dimen/_120sdp"
+            app:cardBackgroundColor="@color/black_trong"
             app:cardCornerRadius="@dimen/_5sdp"
             app:cardElevation="@dimen/_5sdp"
             >

@@ -4,8 +4,16 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/paywall_bg"
-        >
+        android:background="@color/bg">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_galaxy"
+            android:scaleType="centerCrop"
+            android:alpha="0.15"
+            />
+
         <RelativeLayout
             android:layout_marginTop="@dimen/_20sdp"
             android:id="@+id/compat_choice_top_bar"
@@ -24,7 +32,7 @@
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/back_white" />
+                android:src="@drawable/ic_back" />
 
 
 
@@ -50,12 +58,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <ImageView
-            android:id="@+id/iv_translate"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_135sdp"
-            android:src="@color/pink_love"
-            android:visibility="gone" />
 
     </FrameLayout>
 </layout>

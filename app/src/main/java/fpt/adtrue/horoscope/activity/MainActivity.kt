@@ -61,9 +61,11 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
         binding.tvNameSign.text = getZodiac()[SIGN].name
 
 // ________________________________________________________________________________________
-        getViewModel().data.observe(this, Observer {
-            binding.tvDate.text = "${getZodiac()[SIGN].name} - ${it.currentDate}"
-        })
+
+//
+//        getViewModel().data.observe(this, Observer {
+//            binding.tvDate.text = it.currentDate
+//        })
 // ________________________________________________________________________________________
 
         setSupportActionBar(binding.toolbar)
@@ -159,11 +161,11 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
         binding.viewpager.adapter = HomePagerAdapter(supportFragmentManager)
         binding.slidingTabs.getTabAt(1)?.select()
 //        binding.viewpager.offscreenPageLimit = 2
-        binding.logoSign.setOnClickListener {
+        binding.title.setOnClickListener {
             val intent = Intent(applicationContext, ChooseSignActivity::class.java)
             startActivities(arrayOf(intent))
-            binding.logoSign.isEnabled = false
-            val enableButton = Runnable { binding.logoSign.isEnabled = true }
+            binding.title.isEnabled = false
+            val enableButton = Runnable { binding.title.isEnabled = true }
             Handler().postDelayed(enableButton, 1000)
         }
     }
@@ -179,7 +181,8 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
     }
 
     private fun rateIntentForUrl(url: String): Intent {
-        val intent = Intent(ACTION_VIEW, parse(format("%s?id=%s", url, applicationContext.packageName)))
+        val intent =
+            Intent(ACTION_VIEW, parse(format("%s?id=%s", url, applicationContext.packageName)))
         var flags = FLAG_ACTIVITY_NO_HISTORY or FLAG_ACTIVITY_MULTIPLE_TASK
         flags = if (Build.VERSION.SDK_INT >= 21) {
             flags or FLAG_ACTIVITY_NEW_DOCUMENT
@@ -190,7 +193,26 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
         return intent
     }
 
-    override fun onTabSelected(tab: TabLayout.Tab?) {}
+    override fun onTabSelected(tab: TabLayout.Tab?) {
+        when (tab?.position) {
+            0 -> {
+                getViewModel().data2.observe(this, Observer {
+                    binding.tvDate.text = it.currentDate
+                })
+            }
+            1 -> {
+                getViewModel().data.observe(this, Observer {
+                    binding.tvDate.text = it.currentDate
+                })
+            }
+            else -> {
+                getViewModel().data1.observe(this, Observer {
+                    binding.tvDate.text = it.currentDate
+                })
+            }
+
+        }
+    }
 
     override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
@@ -211,13 +233,19 @@ class MainActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
                 true -> {
                     SETTING = true
                     setDataLocal(SETTING)
-                    val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("STOP")
+                    val intent =
+                        Intent(applicationContext, NotificationActionService::class.java).setAction(
+                            "STOP"
+                        )
                     applicationContext.sendBroadcast(intent)
                 }
                 false -> {
                     SETTING = false
                     setDataLocal(SETTING)
-                    val intent = Intent(applicationContext, NotificationActionService::class.java).setAction("PLAY")
+                    val intent =
+                        Intent(applicationContext, NotificationActionService::class.java).setAction(
+                            "PLAY"
+                        )
                     applicationContext.sendBroadcast(intent)
                 }
             }

@@ -10,8 +10,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/_5sdp"
-            android:background="@drawable/paywall_bg"
+            android:background="@color/bg"
             >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bg_galaxy"
+                android:scaleType="centerCrop"
+                android:alpha="0.15"/>
             <RelativeLayout
                 android:id="@+id/compat_choice_top_bar"
                 android:layout_width="fill_parent"
@@ -28,7 +34,7 @@
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:src="@drawable/back_white" />
+                    android:src="@drawable/ic_back" />
                 <ImageView
                     android:layout_width="@dimen/_80sdp"
                     android:layout_height="match_parent"
@@ -38,7 +44,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:gravity="center"
-                    android:text="Tarot Result"
+                    android:text="Tarot"
+                    android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/size_text_top" />
@@ -54,39 +61,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/compat_choice_top_bar" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3"
-                app:layout_constraintTop_toBottomOf="@+id/rc">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/left_arrow" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/size_text_no"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/segoe_bold"
-                    android:text="Scroll" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:src="@drawable/right_arrow" />
-            </LinearLayout>
-
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -94,7 +68,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout16">
+                app:layout_constraintTop_toBottomOf="@+id/rc">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -106,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_5sdp"
                         app:cardBackgroundColor="@color/black_blur"
-                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardCornerRadius="32dp"
                         app:cardElevation="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -114,6 +88,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
+                            android:layout_margin="@dimen/_5sdp"
                             android:layout_height="match_parent">
 
                             <TextView
@@ -121,9 +96,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/_5sdp"
-                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
                                 android:text="Upright"
-                                android:textColor="@color/orange"
+                                android:textColor="#9942FE"
                                 android:textSize="@dimen/size_text_title"
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -159,6 +134,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/cardView5">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_margin="@dimen/_5sdp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
@@ -169,7 +145,7 @@
                                 android:layout_margin="@dimen/_5sdp"
                                 android:layout_marginTop="5dp"
                                 android:text="Reversed"
-                                android:textColor="@color/orange"
+                                android:textColor="#9942FE"
                                 android:textSize="@dimen/size_text_title"
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"

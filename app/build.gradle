@@ -79,6 +79,8 @@ dependencies {
 
     implementation 'com.azoft.carousellayoutmanager:carousel:1.4.5'
 
+    implementation 'com.gtomato.android.library:carouselview:2.0.1'
+
 
     implementation "com.airbnb.android:lottie:3.5.0"
 
@@ -89,5 +91,6 @@ dependencies {
     implementation "androidx.percentlayout:percentlayout:1.0.0"
 
     implementation 'com.kyleduo.switchbutton:library:2.0.3'
+
 
 }

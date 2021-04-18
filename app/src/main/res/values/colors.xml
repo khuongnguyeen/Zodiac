@@ -8,11 +8,11 @@
     <color name="black_blur_4">#D9000000</color>
     <color name="black_blur_2">#69000000</color>
     <color name="colorPrimary">#ff7bc0b9</color>
-    <color name="orange">#ffff9d65</color>
+    <color name="orange">#FF754C</color>
     <color name="pink_love">#fff31e64</color>
     <color name="red">#ffda3f3f</color>
     <color name="transparent">#00000000</color>
-    <color name="warning_stroke_color">#fff8bb86</color>
+    <color name="warning_stroke_color">#9942FE</color>
     <color name="white">#ffffffff</color>
     <color name="bg_button">#9457FF</color>
     <color name="bg">#1D2029</color>

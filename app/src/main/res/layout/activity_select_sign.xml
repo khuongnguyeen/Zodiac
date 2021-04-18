@@ -4,14 +4,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:background="@color/bg"
+        >
 
         <ImageView
             android:id="@+id/default_img"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/background_v2"
+            android:alpha="0.15"
+            android:src="@drawable/bg_galaxy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +26,7 @@
             android:layout_width="@dimen/size_back"
             android:layout_height="@dimen/size_back"
             android:layout_marginStart="@dimen/_10sdp"
-            android:src="@drawable/back_white"
+            android:src="@drawable/ic_back"
             android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -87,11 +90,14 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/loading"
             android:visibility="invisible"
-            >
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <View
@@ -123,10 +129,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:text="Loading . . ."
                 android:textColor="@color/teal_700"
                 android:textSize="@dimen/size_text_title"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
 

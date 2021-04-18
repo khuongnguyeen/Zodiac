@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginTop="@dimen/_24sdp"
             android:id="@+id/compat_choice_top_bar"
             android:layout_width="fill_parent"
@@ -40,24 +40,36 @@
                 android:layout_height="@dimen/size_back"
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/_10sdp"
+                android:layout_marginStart="10dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/back_white" />
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageView
 
                 android:id="@+id/compat_choice_back"
                 android:layout_width="@dimen/_80sdp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:text="MY LOVE"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/size_text_top" />
-        </RelativeLayout>
+                android:textSize="@dimen/size_text_top"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView
@@ -86,29 +98,49 @@
             app:layout_constraintTop_toBottomOf="@+id/compat_choice_title1">
 
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_margin="@dimen/_5sdp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:layout_height="wrap_content">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/compat_choice_left_layout"
-                        android:layout_width="fill_parent"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/compat_choice_him"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/compat_choice_left_title"
-                        android:layout_margin="10.0dip">
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginEnd="10dp"
+                        android:gravity="center"
+                        app:cardBackgroundColor="#0D0D0D"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/compat_choice_left_viewpager"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/_120sdp"
-                            android:layout_centerInParent="true"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/compat_choice_go_wims_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/_8sdp"
+                            android:paddingTop="@dimen/_2sdp"
+                            android:paddingEnd="@dimen/_8sdp"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:text="Find your zodiac"
+                            android:textColor="#9942FE"
+                            android:textSize="@dimen/size_text_no"
+                            android:textStyle="italic" />
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/compat_choice_left_viewpager"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/compat_choice_him" />
 
 
                     <TextView
@@ -120,14 +152,19 @@
                         android:text="HIM"
                         android:textAllCaps="true"
                         android:textColor="@android:color/white"
-                        android:textSize="18.0sp" />
-                </RelativeLayout>
+                        android:textSize="18.0sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/compat_choice_him"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/compat_choice_him" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
 
 
             <ImageView
+                android:id="@+id/iv_center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_center_icon"
@@ -136,48 +173,68 @@
                 tools:layout_editor_absoluteY="44dp" />
 
 
-            <RelativeLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_margin="@dimen/_5sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/compat_choice_right_viewpager"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/compat_choice_right_title" />
+
+
+                <TextView
+                    android:id="@+id/compat_choice_right_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center">
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="HER"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="18.0sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/compat_choice_her"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/compat_choice_her" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/compat_choice_right_layout"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/compat_choice_right_title"
-                        android:layout_margin="10.0dip">
 
-                        z<androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/compat_choice_right_viewpager"
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/_120sdp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/compat_choice_her"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    app:cardBackgroundColor="#0D0D0D"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/compat_choice_right_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:text="HER"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/white"
-                        android:textSize="18.0sp" />
-                </RelativeLayout>
-            </RelativeLayout>
+                        android:paddingStart="@dimen/_8sdp"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:paddingEnd="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:text="Find your zodiac"
+                        android:textColor="#9942FE"
+                        android:textSize="@dimen/size_text_no"
+                        android:textStyle="italic" />
+
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
         <RelativeLayout
@@ -186,8 +243,9 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_below="@+id/compat_choice_signs"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/bg_button_0k"
-            app:layout_constraintBottom_toTopOf="@+id/compat_choice_go_wims"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -198,41 +256,11 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="See Now"
-                android:textAllCaps="true"
+                android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:textSize="21.0sp" />
+                android:textSize="@dimen/size_text_title" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/compat_choice_go_wims"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_below="@+id/compat_choice_btn"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:padding="8.0dip"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
-                android:id="@+id/compat_choice_go_wims_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/compatam_p1_btn"
-                android:textColor="@android:color/white"
-                android:textSize="16.0sp" />
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/compat_choice_go_wims_2"
-                android:layout_alignBottom="@+id/compat_choice_go_wims_2"
-                android:layout_marginLeft="2.0dip"
-                android:layout_toRightOf="@+id/compat_choice_go_wims_2">
-
-            </FrameLayout>
-        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

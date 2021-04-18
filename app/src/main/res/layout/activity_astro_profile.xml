@@ -30,7 +30,7 @@
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/_10sdp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/back_white"
+                android:src="@drawable/ic_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -47,17 +47,16 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginEnd="@dimen/_25sdp"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:text="@string/capricorn"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/size_text_top"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/astro_profile_back"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -85,29 +84,15 @@
 
 
                     <ImageView
-                        android:id="@+id/hp_barometre"
-                        android:layout_width="160.0dip"
-                        android:layout_height="160.0dip"
+                        android:id="@+id/hp_sign"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="56dp"
-                        android:alpha="0"
-                        android:src="@drawable/homepage_baro"
+                        android:src="@drawable/s1_or"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_sign_dates" />
-
-                    <ImageView
-                        android:id="@+id/hp_sign"
-                        android:layout_width="@dimen/_160sdp"
-                        android:layout_height="@dimen/_160sdp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/s1_or"
-                        app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
-                        app:layout_constraintEnd_toEndOf="@+id/hp_barometre"
-                        app:layout_constraintStart_toStartOf="@+id/hp_barometre"
-                        app:layout_constraintTop_toTopOf="@+id/hp_barometre" />
 
                     <TextView
                         android:id="@+id/tv_sign_dates"
@@ -116,7 +101,7 @@
                         android:layout_marginTop="16dp"
                         android:text="Feb 19 – Mar 20"
                         android:textStyle="bold"
-                        android:textColor="@color/warning_stroke_color"
+                        android:textColor="@color/orange"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -128,7 +113,7 @@
                         android:layout_marginBottom="56dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintEnd_toStartOf="@+id/hp_sign"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -160,7 +145,7 @@
                         android:layout_marginBottom="30dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                        app:layout_constraintEnd_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintEnd_toStartOf="@+id/hp_sign"
                         app:layout_constraintStart_toStartOf="parent">
 
                         <TextView
@@ -192,7 +177,7 @@
                         android:orientation="vertical"
                         app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/hp_barometre">
+                        app:layout_constraintStart_toEndOf="@+id/hp_sign">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -222,7 +207,7 @@
                         android:orientation="vertical"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/hp_barometre"
+                        app:layout_constraintStart_toEndOf="@+id/hp_sign"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
@@ -252,9 +237,9 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="30dp"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
+                        app:layout_constraintBottom_toBottomOf="@+id/hp_sign"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/hp_barometre"
+                        app:layout_constraintStart_toEndOf="@+id/hp_sign"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
                         <TextView
@@ -285,8 +270,8 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="30dp"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="@+id/hp_barometre"
-                        app:layout_constraintEnd_toStartOf="@+id/hp_barometre"
+                        app:layout_constraintBottom_toBottomOf="@+id/hp_sign"
+                        app:layout_constraintEnd_toStartOf="@+id/hp_sign"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
@@ -314,14 +299,13 @@
                         android:id="@+id/tv_sign_name_astro"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:text="TextView"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="italic"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/hp_barometre" />
+                        app:layout_constraintTop_toBottomOf="@+id/hp_sign" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -395,7 +379,7 @@
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/bg_child"
                     app:cardElevation="0dp"
@@ -408,7 +392,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_8sdp"
+                        android:fontFamily="sans-serif-light"
                         android:gravity="center"
+                        android:paddingBottom="@dimen/_10sdp"
                         android:text="@string/text"
                         android:textColor="@color/white"
                         android:textSize="@dimen/size_text_no" />
@@ -418,11 +404,10 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_bot_1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:paddingBottom="@dimen/_10sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_margin="@dimen/_5sdp"
                     app:cardBackgroundColor="@color/black_blur"
-                    app:cardCornerRadius="24dp"
+                    app:cardCornerRadius="@dimen/_16sdp"
                     app:cardElevation="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -432,53 +417,58 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/homepage_redir_chat_layout"
                         android:layout_width="fill_parent"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_gravity="center"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_10sdp">
+                        android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView2"
                             android:layout_width="@dimen/_70sdp"
                             android:layout_height="@dimen/_70sdp"
                             android:gravity="center_vertical"
-                            app:cardCornerRadius="18dp"
+                            app:cardCornerRadius="@dimen/_12sdp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:adjustViewBounds="true"
-                                android:src="@drawable/s1_wh" />
+                                android:layout_width="96dp"
+                                android:layout_height="@dimen/_70sdp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_question" />
                         </androidx.cardview.widget.CardView>
 
 
                         <TextView
                             android:id="@+id/homepage_redir_chat_text"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:text="Do not keep those confusing thoughts to youself. \nOur best psychics are waiting to answer all your questions."
+                            android:layout_height="@dimen/_70sdp"
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_marginEnd="@dimen/_3sdp"
+                            android:text="@string/your_questions"
                             android:textColor="@color/white"
                             android:textSize="@dimen/size_text_no"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@+id/cardView2"
                             app:layout_constraintEnd_toStartOf="@+id/homepage_redir_chat_button"
                             app:layout_constraintStart_toEndOf="@+id/cardView2"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="@+id/cardView2" />
 
                         <RelativeLayout
                             android:id="@+id/homepage_redir_chat_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/bg_button_0k"
+                            android:background="@drawable/bg_button_selector"
                             android:gravity="center"
-                            android:padding="@dimen/_10sdp"
-                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:paddingBottom="@dimen/_3sdp"
+                            android:paddingTop="@dimen/_4sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            app:layout_constraintBottom_toBottomOf="@+id/homepage_redir_chat_text"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="@+id/homepage_redir_chat_text">
 
                             <TextView
                                 android:id="@+id/homepage_redir_chat_button_text"

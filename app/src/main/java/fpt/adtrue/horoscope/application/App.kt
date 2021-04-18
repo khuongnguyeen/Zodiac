@@ -33,6 +33,7 @@ class App:Application() {
         var POSITION_CAREER = ""
         var POSITION_FUTURE = ""
         var SETTING = false
+        var HIM = true
 
 
     }

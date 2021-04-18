@@ -7,8 +7,10 @@ import fpt.adtrue.horoscope.BaseActivity
 import fpt.adtrue.horoscope.R
 import fpt.adtrue.horoscope.api.Utils
 import fpt.adtrue.horoscope.application.App
+import fpt.adtrue.horoscope.application.App.Companion.HIM
 import fpt.adtrue.horoscope.application.App.Companion.SIGN
 import fpt.adtrue.horoscope.databinding.ActivityWhatIsMySignBinding
+import java.util.*
 
 class ChoiceDateActivity: BaseActivity(){
 
@@ -19,13 +21,17 @@ class ChoiceDateActivity: BaseActivity(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_what_is_my_sign)
 
 
-
         binding.wimsValidate.setOnClickListener {
             val day = binding.dp.day
             val mon = binding.dp.month
             SIGN = Utils.checkDate(mon, day)
-            val intent = Intent(applicationContext, ProfileAstroActivity::class.java)
-            startActivities(arrayOf(intent))
+            if (HIM){
+                val intent = Intent(applicationContext, ProfileAstroActivity::class.java)
+                startActivities(arrayOf(intent))
+            }else{
+                val intent = Intent(applicationContext, ChoiceCompatActivity::class.java)
+                startActivities(arrayOf(intent))
+            }
         }
         binding.wimsBack.setOnClickListener {
             onBackPressed()
