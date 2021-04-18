@@ -34,11 +34,11 @@ class StartReadingTarotAdapter(private val inter: ITarot) :
             holder.binding.tvCenter.text = "Explore Cards"
         }
         holder.binding.root.setOnClickListener {
-//            holder.binding.root.isEnabled = false
-//            val enableButton = Runnable {
-//                holder.binding.root.isEnabled = true
-//            }
-//            Handler(Looper.getMainLooper()).postDelayed(enableButton, 3000)
+            holder.binding.root.isEnabled = false
+            val enableButton = Runnable {
+                holder.binding.root.isEnabled = true
+            }
+            Handler(Looper.getMainLooper()).postDelayed(enableButton, 1000)
             inter.onClickItem(position)
         }
     }

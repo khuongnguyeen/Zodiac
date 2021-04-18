@@ -9,11 +9,11 @@
         <item
             android:id="@+id/person_horo"
             android:icon="@drawable/ic_amour_1"
-            android:title="@string/menu_item_21_txt" />
+            android:title="Horoscopes" />
         <item
             android:id="@+id/my_as_profile"
             android:icon="@drawable/ic_amour_3"
-            android:title="@string/menu_item_22_txt" />
+            android:title="Love" />
         <item
             android:id="@+id/tarot"
             android:icon="@drawable/ic_amour_4"
