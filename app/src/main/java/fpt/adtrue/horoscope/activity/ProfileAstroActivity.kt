@@ -27,8 +27,8 @@ class ProfileAstroActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_astro_profile)
-        val s = intent.getStringExtra("horoscope")
-        if (s != null) binding.textView6.text = s
+//        val s = intent.getStringExtra("horoscope")
+//        if (s != null) binding.textView6.text = s
         binding.tvSignNameAstro.text = getZodiac()[SIGN].name
 
         Utils.sttBar(this)

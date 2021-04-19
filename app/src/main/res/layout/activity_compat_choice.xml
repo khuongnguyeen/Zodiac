@@ -239,10 +239,12 @@
 
         <RelativeLayout
             android:id="@+id/compat_choice_btn"
-            android:layout_width="@dimen/_250sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
             android:layout_below="@+id/compat_choice_signs"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:background="@drawable/bg_button_0k"
             app:layout_constraintBottom_toBottomOf="parent"

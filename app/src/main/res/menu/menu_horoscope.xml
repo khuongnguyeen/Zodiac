@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:title="HOROSCOPES"
-        android:checked="false"
-        android:enabled="false"
-        />
-    <group>
-        <item
-            android:id="@+id/person_horo"
-            android:icon="@drawable/ic_amour_1"
-            android:title="Horoscopes" />
-        <item
-            android:id="@+id/my_as_profile"
-            android:icon="@drawable/ic_amour_3"
-            android:title="Love" />
-        <item
-            android:id="@+id/tarot"
-            android:icon="@drawable/ic_amour_4"
-            android:title="Tarot" />
-        <item
-            android:id="@+id/contact_us"
-            android:icon="@drawable/ic_contact_form"
-            android:title="Feedback" />
-        <item
-            android:id="@+id/rate_us"
-            android:icon="@drawable/star_of_favourites"
-            android:title="Rate Us" />
-        <item
-            android:id="@+id/about_us"
-            android:icon="@drawable/ic_browser"
-            android:title="About Us" />
 
+    <group android:checkableBehavior="single">
+        <item  android:title="Horoscopes"
+            >
+            <menu>
+                <group >
+                    <item
+                        android:id="@+id/person_horo"
+                        android:icon="@drawable/ic_amour_1"
+                        android:title="Horoscopes" />
+                    <item
+                        android:id="@+id/my_as_profile"
+                        android:icon="@drawable/ic_amour_3"
+                        android:title="Love" />
+                    <item
+                        android:id="@+id/tarot"
+                        android:icon="@drawable/ic_amour_4"
+                        android:title="Tarot" />
+                    <item
+                        android:id="@+id/contact_us"
+                        android:icon="@drawable/ic_contact_form"
+                        android:title="Feedback" />
+                    <item
+                        android:id="@+id/rate_us"
+                        android:icon="@drawable/star_of_favourites"
+                        android:title="Rate Us" />
+                    <item
+                        android:id="@+id/about_us"
+                        android:icon="@drawable/ic_browser"
+                        android:title="About Us" />
+
+                </group>
+            </menu>
+        </item>
     </group>
+
+
+
 </menu>

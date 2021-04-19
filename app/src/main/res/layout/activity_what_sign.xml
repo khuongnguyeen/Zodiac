@@ -81,7 +81,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />1
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.ycuwq.datepicker.date.DatePicker
                 android:id="@+id/dp"
@@ -105,11 +105,12 @@
 
         <RelativeLayout
             android:id="@+id/wims_validate"
-            android:layout_width="@dimen/_250sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="56dp"
-            android:background="@drawable/rounded_button_blue"
+            android:background="@drawable/bg_button_0k"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">

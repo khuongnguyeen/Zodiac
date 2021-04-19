@@ -65,18 +65,17 @@
             app:layout_constraintVertical_bias="0.493">
 
 
-
             <TextView
                 android:id="@+id/tv_her"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="Him/Her Birthday"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.ycuwq.datepicker.date.DatePicker
                 android:id="@+id/dp"
@@ -100,11 +99,12 @@
 
         <RelativeLayout
             android:id="@+id/wims_validate"
-            android:layout_width="@dimen/_250sdp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_button_blue"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/bg_button_0k"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">

@@ -2,10 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,6 +63,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/compat_choice_top_bar" />
 
+            <ImageView
+                android:id="@+id/view_2"
+                android:layout_width="@dimen/_82sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:background="@drawable/bg_conner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/compat_choice_top_bar" />
+
+
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -78,9 +90,9 @@
                         android:id="@+id/cardView5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_margin="@dimen/_10sdp"
                         app:cardBackgroundColor="@color/black_blur"
-                        app:cardCornerRadius="32dp"
+                        app:cardCornerRadius="@dimen/_16sdp"
                         app:cardElevation="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -125,9 +137,9 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_5sdp"
+                        android:layout_margin="@dimen/_10sdp"
                         app:cardBackgroundColor="@color/black_blur"
-                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardCornerRadius="@dimen/_16sdp"
                         app:cardElevation="0dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

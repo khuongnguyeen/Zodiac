@@ -1,22 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Theme.Horoscope" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
-
         <item name="android:fontFamily">sans-serif-light</item>
-        <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
     </style>
-    <style name="AppTheme.PopupOverlay" parent="@style/Theme.AppCompat.Light.DarkActionBar" >
 
+    <style name="AppTheme.PopupOverlay" parent="@style/Theme.AppCompat.Light.DarkActionBar" >
         <item name="android:colorBackground">@color/black</item>
         <item name="android:background">@color/black</item>
         <item name="android:textColor">@color/white</item>
@@ -26,20 +21,18 @@
         <item name="android:tint">#899C27B0</item>
         <item name="android:colorBackground">@color/black</item>
         <item name="android:textColor">@color/white</item>
-
     </style>
-
 
     <style name="SwitchTheme" parent="Theme.AppCompat.Light">
         <item name="android:colorControlActivated" tools:ignore="NewApi">@color/red</item>
     </style>
 
-
-
     <style name="NavigationView"  parent="Base.Theme.AppCompat">
-        <item name="android:listDivider">@color/white</item>
+        <item name="android:listDivider">@color/warning_stroke_color</item>
+        <item name="android:textColorHint">@color/warning_stroke_color</item>
+        <item name="android:layout_marginTop">@dimen/_15sdp</item>
+        <item name="android:textColorSecondary">@color/warning_stroke_color</item>
     </style>
-
 
     <style name="Theme">
         <item name="android:windowBackground">@color/transparent</item>
@@ -47,9 +40,7 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-
         <item name="android:fontFamily">sans-serif-light</item>
-
     </style>
 
     <style name="Theme.Translucent">
@@ -57,7 +48,12 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
 
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 </resources>

@@ -47,7 +47,6 @@
                         android:id="@id/toolbar"
                         android:layout_width="fill_parent"
                         android:layout_height="?actionBarSize"
-                        android:theme="@style/MyOverflowButtonStyle"
                         app:contentInsetStartWithNavigation="0.0dip"
                         app:popupTheme="@style/AppTheme.PopupOverlay"
                         app:navigationIcon="@drawable/ic_menu"
@@ -69,6 +68,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
+                            app:cardBackgroundColor="@color/transparent"
                             app:cardCornerRadius="18dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -97,6 +97,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/aries"
+                                android:textStyle="bold"
                                 android:textAllCaps="true"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/size_text_title" />
@@ -137,7 +138,10 @@
                         android:id="@id/sliding_tabs"
                         app:tabIndicatorGravity="center"
                         android:layout_width="match_parent"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_gravity="center"
                         android:background="@drawable/bg_sign_home"
@@ -151,6 +155,7 @@
                         app:tabInlineLabel="true"
                         app:tabTextColor="#bdbdbd"
                         app:tabBackground="@drawable/bg_tab_layout"
+                        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
                         />
                 </com.google.android.material.appbar.AppBarLayout>
 
@@ -173,10 +178,8 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
-
-                        android:layout_marginStart="20dp"
-
-                        android:layout_marginEnd="20dp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
                         android:background="@drawable/bg_loading"
                         app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
                         app:layout_constraintEnd_toEndOf="parent"

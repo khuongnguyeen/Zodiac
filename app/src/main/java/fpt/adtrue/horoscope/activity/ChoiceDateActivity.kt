@@ -20,6 +20,7 @@ class ChoiceDateActivity: BaseActivity(){
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_what_is_my_sign)
 
+        binding.dp.setMaxDate(Date().time)
 
         binding.wimsValidate.setOnClickListener {
             val day = binding.dp.day

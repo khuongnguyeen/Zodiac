@@ -27,11 +27,13 @@ class StartReadingTarotAdapter(private val inter: ITarot) :
             holder.binding.ivTop.setImageResource(R.drawable.ic_yes_no)
             holder.binding.textBottom.text = "Coming Soon"
             holder.binding.tvCenter.text = "Get your answer"
+            holder.binding.rc.setBackgroundResource(R.drawable.bg_button_coming_soon)
         }
         if (position == 2) {
             holder.binding.ivTop.setImageResource(R.drawable.all_card)
             holder.binding.textBottom.text = "Coming Soon"
             holder.binding.tvCenter.text = "Explore Cards"
+            holder.binding.rc.setBackgroundResource(R.drawable.bg_button_coming_soon)
         }
         holder.binding.root.setOnClickListener {
             holder.binding.root.isEnabled = false

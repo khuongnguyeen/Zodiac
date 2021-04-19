@@ -515,7 +515,7 @@
 
                 <RelativeLayout
                     android:id="@+id/compat_results_again"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cv_3"
                     android:layout_margin="@dimen/_10sdp"

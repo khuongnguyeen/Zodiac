@@ -42,7 +42,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
           <RelativeLayout
-              android:layout_width="@dimen/_70sdp"
+              android:id="@+id/rc"
+              android:layout_width="@dimen/_74sdp"
               android:layout_height="wrap_content"
               android:background="@drawable/bg_button"
               app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +59,7 @@
                   android:text="Cards"
                   android:layout_centerInParent="true"
                   android:textColor="@color/white"
-                  android:textSize="@dimen/_12ssp"
+                  android:textSize="@dimen/_10ssp"
                   android:textStyle="bold"/>
           </RelativeLayout>
 

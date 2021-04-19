@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools">
+
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/bg"
-        >
+        android:background="@color/bg">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/bg_galaxy"
+            android:alpha="0.15"
             android:scaleType="centerCrop"
-            android:alpha="0.15"/>
+            android:src="@drawable/bg_galaxy" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/astro_profile_top_bar"
@@ -20,7 +21,6 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_24sdp"
             android:gravity="center_vertical">
-
 
 
             <ImageView
@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tv_sign_name_astro"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center"
@@ -75,9 +75,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/header"
-                    android:layout_marginTop="@dimen/_24sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -100,8 +100,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="Feb 19 – Mar 20"
-                        android:textStyle="bold"
                         android:textColor="@color/orange"
+                        android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -152,8 +152,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:textColor="@color/white"
                             android:text="Color"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
@@ -245,9 +245,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Lucky Day"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
@@ -278,9 +278,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Planet"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
@@ -294,18 +294,6 @@
                             android:textStyle="bold" />
 
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tv_sign_name_astro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_10sdp"
-                        android:textStyle="italic"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/hp_sign" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -328,9 +316,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Polarity"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
@@ -339,7 +327,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="masculine"
-                            android:textColor="@color/white"
+                            android:textColor="@color/warning_stroke_color"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
 
@@ -354,9 +342,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="Modality"
                             android:textColor="@color/white"
-                            android:layout_gravity="center"
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
@@ -365,7 +353,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="fixed"
-                            android:textColor="@color/white"
+                            android:textColor="@color/warning_stroke_color"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />
 
@@ -379,9 +367,12 @@
                     android:id="@+id/cardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_5sdp"
-                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/bg_child"
+                    app:cardCornerRadius="@dimen/_16sdp"
                     app:cardElevation="0dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -389,12 +380,12 @@
 
                     <fpt.adtrue.horoscope.customview.JustifyTextView
                         android:id="@+id/astro_profile_text_sign"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/_8sdp"
+                        android:layout_margin="@dimen/_10sdp"
+
                         android:fontFamily="sans-serif-light"
                         android:gravity="center"
-                        android:paddingBottom="@dimen/_10sdp"
                         android:text="@string/text"
                         android:textColor="@color/white"
                         android:textSize="@dimen/size_text_no" />
@@ -405,7 +396,7 @@
                     android:id="@+id/cv_bot_1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_80sdp"
-                    android:layout_margin="@dimen/_5sdp"
+                    android:layout_margin="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/black_blur"
                     app:cardCornerRadius="@dimen/_16sdp"
                     app:cardElevation="0dp"
@@ -417,10 +408,10 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/homepage_redir_chat_layout"
                         android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_gravity="center"
-                        android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <androidx.cardview.widget.CardView
@@ -440,13 +431,13 @@
                                 android:src="@drawable/ic_question" />
                         </androidx.cardview.widget.CardView>
 
-
                         <TextView
                             android:id="@+id/homepage_redir_chat_text"
                             android:layout_width="0dp"
                             android:layout_height="@dimen/_70sdp"
                             android:layout_marginStart="@dimen/_3sdp"
                             android:layout_marginEnd="@dimen/_3sdp"
+                            android:gravity="center"
                             android:text="@string/your_questions"
                             android:textColor="@color/white"
                             android:textSize="@dimen/size_text_no"
@@ -462,10 +453,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/bg_button_selector"
                             android:gravity="center"
-                            android:paddingBottom="@dimen/_3sdp"
+                            android:paddingStart="@dimen/_10sdp"
                             android:paddingTop="@dimen/_4sdp"
                             android:paddingEnd="@dimen/_10sdp"
-                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_3sdp"
                             app:layout_constraintBottom_toBottomOf="@+id/homepage_redir_chat_text"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/homepage_redir_chat_text">
@@ -480,20 +471,16 @@
                                 android:textSize="@dimen/size_text_no"
                                 android:textStyle="bold"
                                 tools:ignore="HardcodedText" />
+
                         </RelativeLayout>
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                 </androidx.cardview.widget.CardView>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.core.widget.NestedScrollView>
 
-        <!--    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"-->
-        <!--        android:id="@+id/adView"-->
-        <!--        android:layout_width="fill_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_gravity="bottom|center"-->
-        <!--        android:gravity="center"-->
-        <!--        android:visibility="gone"-->
-        <!--        ads:adSize="BANNER"-->
-        <!--        ads:adUnitId="@string/adUnitIdBanner" />-->
     </FrameLayout>
 </layout>

@@ -31,8 +31,6 @@ class StartReadingTarotActivity : BaseActivity(), StartReadingTarotAdapter.ITaro
             binding.tvToday.text = it.currentDate
         })
 
-
-
         binding.compatChoiceBack.setOnClickListener {
             onBackPressed()
         }

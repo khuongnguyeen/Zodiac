@@ -46,6 +46,7 @@ class ResultsTarotActivity : Activity(), View.OnTouchListener , TarotResultAdapt
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         layoutManager = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, true)
         layoutManager!!.setPostLayoutListener(CarouselZoomPostLayoutListener())
+        layoutManager!!.maxVisibleItems = 2
         binding.rc.layoutManager = layoutManager
         binding.rc.setHasFixedSize(true)
         binding.rc.adapter = TarotResultAdapter(this)
